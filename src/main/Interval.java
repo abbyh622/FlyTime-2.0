@@ -8,20 +8,22 @@ package main;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.scene.input.KeyCode;
+
 public class Interval {
     private String startTime;   // timestamp when interval begins, not sure if should be string 
-    private HashMap<Integer, Boolean> scores;
+    private HashMap<KeyCode, Boolean> scores;
 
     // hashmap with all values initialized to false to create initial scores map for each interval
-    private static final Map<Integer, Boolean> defaultScores = new HashMap<>();
+    private static Map<KeyCode, Boolean> defaultScores = new HashMap<>();
     static {
-        for (int b : App.behaviorNums) {
-            defaultScores.put(b, false);
+        for (KeyBehaviorPair p : App.selectedExperiment.getBehaviorPairs()) {
+            defaultScores.put(p.getKeyCode(), false);
         }
     }
 
     // constructor 
-    // time passed from main -> arena -> interval
+    // time passed from main -> arena -> interval ?
     public Interval(String time) {
         this.startTime = time;
         this.scores = new HashMap<>(defaultScores);
@@ -32,12 +34,13 @@ public class Interval {
         return startTime;
     }
 
-    public HashMap<Integer, Boolean> getScores() {
+    public HashMap<KeyCode, Boolean> getScores() {
         return this.scores;
     }
 
     // if current value for the behavior is false, make true
-    public void recordBehavior(int behaviorNum) {
-        scores.replace(behaviorNum, false, true);
+    public void recordBehavior(KeyCode b) {
+        scores.replace(b, false, true);
+        System.out.println(b + " recorded");
     }
 }
