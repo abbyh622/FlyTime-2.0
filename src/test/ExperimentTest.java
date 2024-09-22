@@ -5,20 +5,21 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
+
 import main.Experiment;
-import main.MaxBehaviorsExceededException;
+import exceptions.MaxBehaviorsExceededException;
 
 // add more edge case tests
 
 public class ExperimentTest {
 
-    private Map<Integer, String> testMap = new HashMap<>();
+    private Map<Character, String> testMap = new HashMap<>();
 
     @Before
     public void setup() {
-        testMap.put(1, "one");
-        testMap.put(2, "two");
-        testMap.put(3, "three");
+        testMap.put('1', "one");
+        testMap.put('2', "two");
+        testMap.put('3', "three");
     }
     
     @Test
@@ -37,9 +38,9 @@ public class ExperimentTest {
     }
     @Test (expected = MaxBehaviorsExceededException.class)
     public void bothParamConstructorLimitTest() throws MaxBehaviorsExceededException {
-        Map<Integer, String> overflowMap = new HashMap<>();
-        for (int i = 1; i <= 10; i++) {
-            overflowMap.put(i, "behavior " + i);
+        Map<Character, String> overflowMap = new HashMap<>();
+        for (Integer i = 1; i <= 10; i++) {
+            overflowMap.put(i.toString().charAt(0), "behavior " + i);
         }
         Experiment experiment = new Experiment("test", overflowMap);
     }
@@ -62,17 +63,17 @@ public class ExperimentTest {
         Experiment experiment = new Experiment("test");
         experiment.addBehavior("one");
         assertEquals(1, experiment.getBehaviors().size());
-        assertEquals("one", experiment.getBehaviors().get(1));
+        assertEquals("one", experiment.getBehaviors().get('1'));
         experiment.addBehavior("two");
         assertEquals(2, experiment.getBehaviors().size());
-        assertEquals("two", experiment.getBehaviors().get(2));
+        assertEquals("two", experiment.getBehaviors().get('2'));
     }
     @Test 
     public void addMoreBehaviorTest() throws MaxBehaviorsExceededException {
         Experiment experiment = new Experiment("test", testMap);
         experiment.addBehavior("four");
         assertEquals(4, experiment.getBehaviors().size());
-        assertEquals("four", experiment.getBehaviors().get(4));
+        assertEquals("four", experiment.getBehaviors().get('4'));
     }
     @Test (expected = MaxBehaviorsExceededException.class)
     public void addBehaviorLimitTest() throws MaxBehaviorsExceededException {
@@ -96,9 +97,9 @@ public class ExperimentTest {
     }
     @Test
     public void setNewBehaviorsTest()  throws MaxBehaviorsExceededException {
-        HashMap<Integer, String> newMap = new HashMap<>();
-        newMap.put(4, "four");
-        newMap.put(5, "five");
+        HashMap<Character, String> newMap = new HashMap<>();
+        newMap.put('4', "four");
+        newMap.put('5', "five");
         Experiment experiment = new Experiment("test", testMap);
         experiment.setBehaviors(newMap);
         assertEquals(2, experiment.getBehaviors().size());
@@ -106,10 +107,10 @@ public class ExperimentTest {
     }
     @Test (expected = MaxBehaviorsExceededException.class)
     public void setBehaviorsLimitTest() throws MaxBehaviorsExceededException {
-        HashMap<Integer, String> newMap = new HashMap<>();
-        for (int i = 1; i <= 10; i++) {
+        HashMap<Character, String> newMap = new HashMap<>();
+        for (Integer i = 1; i <= 10; i++) {
             String behav = "behavior " + (i + 1);
-            newMap.put(i, behav);
+            newMap.put(i.toString().charAt(0), behav);
         }
         Experiment experiment = new Experiment("test", testMap);
         experiment.setBehaviors(newMap);

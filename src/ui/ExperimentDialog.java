@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import exceptions.MaxBehaviorsExceededException;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -34,11 +36,8 @@ import main.Experiment;
 import main.KeyBehaviorPair;
 import main.Util;
 
-// for behaviors, add delete icon next to each
 
 // should limit name input length?
-
-// need to add an 'experiment settings' screen to edit/delete saved experiments
 
 public class ExperimentDialog extends Dialog<Experiment> {
     
@@ -49,8 +48,8 @@ public class ExperimentDialog extends Dialog<Experiment> {
     VBox mainLayout = new VBox(10);
     TextField nameField = new TextField();
     Button addButton = new Button("Add Behavior");
-    CheckBox saveCheckBox = new CheckBox("Save experiment");
-    
+    // i think this should just be deleted and just have things always saved
+    // CheckBox saveCheckBox = new CheckBox("Save experiment");
     // put a context menu/hint on checkbox to explain 
 
     // constructor
@@ -65,6 +64,11 @@ public class ExperimentDialog extends Dialog<Experiment> {
         }
         buildWindow();
     }
+    // constructor for restricted editing on screen 1
+    // can only edit behavior key bindings for simplicity
+    // public ExperimentDialog(Experiment e, boolean restricted) {
+
+    // }
 
     private void buildWindow() {
         DialogPane pane = getDialogPane();
@@ -83,14 +87,15 @@ public class ExperimentDialog extends Dialog<Experiment> {
         // mainLayout.getChildren().addAll(nameBox, addButton);
 
         container.getChildren().addAll(nameBox, mainLayout, addButton);
-        HBox checkBoxContainer = new HBox(saveCheckBox);
-        checkBoxContainer.setAlignment(Pos.CENTER_RIGHT);
-        container.getChildren().add(checkBoxContainer);
+        // HBox checkBoxContainer = new HBox(saveCheckBox);
+        // checkBoxContainer.setAlignment(Pos.CENTER_RIGHT);
+        // container.getChildren().add(checkBoxContainer);
 
         pane.setContent(container);
 
-        if (experiment != null) {
+        if (!experiment.isEmpty()) {
             // fill observablelist with existing behaviors if editing experiment
+            nameField.setText(experiment.getName());
             for (KeyBehaviorPair p : experiment.getBehaviorPairs()) {
                 behaviors.add(p);
             }
@@ -132,10 +137,13 @@ public class ExperimentDialog extends Dialog<Experiment> {
                 // problem - if an experiment is added/changed and not saved then another is added/changed later and saved (in same session), the previous experiment will be saved also because its in the main list
                 // also unnecessary then to save after each experiment in the edit/config page because if ur editing/adding multiple then they can just all be saved at the end
                 // need to rework this part 
-                App.experimentMan.experiments.add(experiment);
-                if (saveCheckBox.isSelected()) {
-                    App.experimentMan.saveExperiments();
-                }  
+                // add new experiment to list is creating, not if editing existing experiment
+                if (this.getTitle() == "New experiment type") {
+                    App.experimentMan.experiments.add(experiment);
+                }
+                // if (saveCheckBox.isSelected()) {
+                //     App.experimentMan.saveExperiments();
+                // }  
             }
         });
     }
@@ -155,15 +163,31 @@ public class ExperimentDialog extends Dialog<Experiment> {
             TextField keyField = new TextField(b.getKeyProperty().toString());
             keyField.setTextFormatter(getFormatter());
             TextField descField = new TextField(b.getBehavior());
-            keyField.setPrefWidth(40);
-            descField.setPrefWidth(300);
+            keyField.setPrefWidth(30);
+            descField.setPrefWidth(250);
     
             keyField.textProperty().bindBidirectional(b.getKeyProperty());
             descField.textProperty().bindBidirectional(b.getBehaviorProperty());
+
+            Button deleteButton = GlyphsDude.createIconButton(FontAwesomeIcon.TRASH);
+            deleteButton.setOnAction(event -> {
+                // this exception shouldnt happen ever
+                try { deleteBehavior(b); } 
+                catch (MaxBehaviorsExceededException e) {
+                    System.out.println("MaxBehaviorsExceededException occurred while deleting behavior");
+                    e.printStackTrace(); }
+            });
     
-            hbox.getChildren().addAll(keyField, descField);
+            hbox.getChildren().addAll(keyField, descField, deleteButton);
             mainLayout.getChildren().add(hbox);
         }
+    }
+
+    public void deleteBehavior(KeyBehaviorPair behav) throws MaxBehaviorsExceededException {
+        List<KeyBehaviorPair> behavPairs = this.experiment.getBehaviorPairs();
+        behavPairs.remove(behav);
+        this.experiment.setBehaviors(behavPairs);
+        behaviors.setAll(this.experiment.getBehaviorPairs());
     }
 
     // should check that behavior descriptions are unique and not empty?

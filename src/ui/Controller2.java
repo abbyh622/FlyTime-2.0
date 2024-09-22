@@ -12,6 +12,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -37,12 +38,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 import main.App;
 import main.Arena;
 import main.KeyBehaviorPair;
+import main.Util;
 
 // seconds input field not restricted, arrows dont work
 
@@ -53,11 +57,12 @@ public class Controller2 implements Initializable {
     private Parent root;
     private String prevScene = "screen1.fxml";
     private String nextScene = "recordingscreen.fxml";
+    private String settingsScene = "settingsscreen.fxml";
 
     @FXML 
     private HBox experimentHbox;
     @FXML 
-    private TableView<Arena> arenaTable;
+    private TableView<Arena> arenaTable;    // context menu is in the fxml file
     @FXML
     private TableView<KeyBehaviorPair> behaviorTable;
     @FXML
@@ -67,22 +72,33 @@ public class Controller2 implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        App.prevScene = "/ui/screen2.fxml";
         // set up arena table 
         TableColumn<Arena, Number> numberCol = new TableColumn<>("Number");
         numberCol.setCellValueFactory(new PropertyValueFactory<>("num"));
         TableColumn<Arena, String> descCol = new TableColumn<>("Description");
         descCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        // set column widths
+        numberCol.prefWidthProperty().bind(arenaTable.widthProperty().multiply(0.29));
+        descCol.prefWidthProperty().bind(arenaTable.widthProperty().multiply(0.69));
         arenaTable.getColumns().addAll(numberCol, descCol);
         arenaTable.setItems(App.arenaList);
 
         // show experiment name and behavior key bindings
         Label experimentLabel = new Label(App.selectedExperiment.getName());  
+        experimentLabel.setFont(Font.font("System", FontWeight.BOLD, 16.0));
         experimentHbox.getChildren().add(experimentLabel);
 
+        // populate tableview with behavior names and keys
         TableColumn<KeyBehaviorPair, String> behaviorCol = new TableColumn<>("Behavior");
         behaviorCol.setCellValueFactory(new PropertyValueFactory<>("behavior"));
         TableColumn<KeyBehaviorPair, String> keyCol = new TableColumn<>("Key");
         keyCol.setCellValueFactory(new PropertyValueFactory<>("key"));
+        // set column widths
+        behaviorCol.prefWidthProperty().bind(behaviorTable.widthProperty().multiply(0.69));
+        behaviorCol.setResizable(false);
+        keyCol.prefWidthProperty().bind(behaviorTable.widthProperty().multiply(0.29));
+        keyCol.setResizable(false);
         behaviorTable.getColumns().addAll(behaviorCol, keyCol);
         behaviorTable.setItems(keyBindings);
         behaviorTable.setSelectionModel(null);
@@ -123,23 +139,28 @@ public class Controller2 implements Initializable {
         Arena selected = arenaTable.getSelectionModel().getSelectedItem();
         if (selected == null) return;
 
-        Alert confirmDelete = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this arena?");
-        confirmDelete.setHeaderText("Confirm Deletion");
-        confirmDelete.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.OK) {
+        Alert confirm = Util.showConfirmDialog(stage, "Are you sure you want to delete arena " + selected.getNum() + " (" + selected.getDescription() + ")?");
+        Optional<ButtonType> result = confirm.showAndWait();
+        if (result.isPresent()) {
+            if (result.get() == ButtonType.OK) {
                 App.arenaList.remove(selected);
             }
-        });
+        }
     }
 
+    // go to next screen
     public void next(ActionEvent e) throws Exception {
-        // go to next screen
         // check that everything is valid first
+        if (App.arenaList.isEmpty()) {
+            Util.showError(stage, "Enter at least one arena");
+            return;
+        }
         App.seconds = secondSpinner.getValue();
 
         root = FXMLLoader.load(getClass().getResource(nextScene));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        scene.getStylesheets().add(App.stylesheet);
         stage.setScene(scene);
         stage.show();
     }
@@ -149,6 +170,16 @@ public class Controller2 implements Initializable {
         root = FXMLLoader.load(getClass().getResource(prevScene));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        scene.getStylesheets().add(App.stylesheet);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void settingsScreen(ActionEvent e) throws Exception {
+        root = FXMLLoader.load(getClass().getResource(settingsScene));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(App.stylesheet);
         stage.setScene(scene);
         stage.show();
     }

@@ -16,14 +16,14 @@
    <bottom>
       <HBox fx:id="bottomHbox" alignment="CENTER_LEFT" prefHeight="191.0" prefWidth="900.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="keyBindingTable" prefHeight="175.0" prefWidth="430.0">
+            <TableView fx:id="keyBindingTable" prefHeight="170.0" prefWidth="330.0" styleClass="keyBindingTable">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <VBox fx:id="curArenaVbox" alignment="CENTER" prefHeight="175.0" prefWidth="430.0" spacing="10.0">
+            <VBox fx:id="curArenaVbox" alignment="CENTER" prefHeight="170.0" prefWidth="530.0" spacing="10.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="560.0" text="Current Arena">
+                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="560.0" styleClass="recordingHeader" text="Current Arena">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -45,14 +45,24 @@
       <Pane fx:id="videoPane" prefHeight="504.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
             <MediaView fx:id="videoMediaView" fitHeight="504.0" fitWidth="900.0" />
-            <Button fx:id="finishButton" contentDisplay="CENTER" disable="true" layoutX="313.0" layoutY="252.0" mnemonicParsing="false" onAction="#next" prefHeight="92.0" prefWidth="275.0" text="Finish" textAlignment="CENTER" textFill="#ed5abf" visible="false">
+            <Button fx:id="finishButton" contentDisplay="CENTER" disable="true" layoutX="313.0" layoutY="252.0" mnemonicParsing="false" onAction="#next" prefHeight="92.0" prefWidth="275.0" styleClass="navButton" text="Finish" textAlignment="CENTER" visible="false">
                <font>
-                  <Font name="Comic Sans MS Bold" size="36.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Button>
-            <Slider fx:id="timeSlider" layoutX="25.0" layoutY="481.0" prefHeight="14.0" prefWidth="850.0" />
-            <Label fx:id="currentTimeLabel" layoutX="25.0" layoutY="496.0" prefHeight="17.0" prefWidth="53.0" />
-            <Label fx:id="totalDurationLabel" alignment="CENTER_RIGHT" layoutX="811.0" layoutY="496.0" prefHeight="13.0" prefWidth="64.0" />
+            <Slider fx:id="timeSlider" layoutX="25.0" layoutY="467.0" prefHeight="14.0" prefWidth="850.0" />
+            <Label fx:id="currentTimeLabel" layoutX="25.0" layoutY="486.0" prefHeight="17.0" prefWidth="53.0" />
+            <Label fx:id="totalDurationLabel" alignment="CENTER_RIGHT" layoutX="811.0" layoutY="486.0" prefHeight="13.0" prefWidth="64.0" />
+            <HBox alignment="CENTER" layoutX="78.0" layoutY="479.0" prefHeight="32.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="volumeButton" mnemonicParsing="false" onAction="#toggleMute" />
+                  <Slider fx:id="volumeSlider">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Slider>
+               </children>
+            </HBox>
          </children>
       </Pane>
    </center>

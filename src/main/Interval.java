@@ -39,8 +39,12 @@ public class Interval {
     }
 
     // if current value for the behavior is false, make true
-    public void recordBehavior(KeyCode b) {
-        scores.replace(b, false, true);
-        System.out.println(b + " recorded");
+    // return true if replacement was made to update ui in RecordingController
+    public boolean recordBehavior(KeyCode b) {
+        if (scores.replace(b, false, true)) {
+            System.out.println(b + " recorded");
+            return true;
+        }
+        return false;
     }
 }

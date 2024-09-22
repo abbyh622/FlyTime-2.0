@@ -17,9 +17,9 @@ import main.App;
 import main.Arena;
 import main.Util;
 
-// number field restrictions not working
+// disallow commas in description, will interfere with cumulative csv
 
-// should limit description input length?
+// number field restrictions not working
 
 public class ArenaDialog extends Dialog<Arena> {
     private Arena arena;

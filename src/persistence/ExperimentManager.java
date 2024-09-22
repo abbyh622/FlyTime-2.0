@@ -29,6 +29,11 @@ public class ExperimentManager {
     // this is the list of experiments available during runtime
     public static ArrayList<Experiment> experiments; 
 
+    // static instantiated when app starts, so experiments are loaded right away
+    public ExperimentManager() {
+        loadExperiments();
+    }
+
     // parses json file of stored experiments and converts them to Experiment objects
     public void loadExperiments() {
         experiments = new ArrayList<Experiment>();
@@ -95,8 +100,7 @@ public class ExperimentManager {
 
                 JSONObject jsonBehaviors = new JSONObject();
                 for (KeyBehaviorPair p : e.getBehaviorPairs()) {
-                    JSONObject jsonBehavior = new JSONObject();
-
+                    // JSONObject jsonBehavior = new JSONObject();
                     jsonBehaviors.put(Character.toString(p.getKey()), p.getBehavior());   // can delete this line i think
                 } 
 

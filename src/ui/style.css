@@ -1,0 +1,90 @@
+
+.root {
+    -fx-font-family: "Bahnschrift";
+}
+
+.title {
+    -fx-font: bold 28 "Bahnschrift";
+}
+.header {
+    -fx-font: bold 20 "Bahnschrift";
+}
+
+.button:focused, .table-view:focused, .tree-view:focused, .tree-cell:focused, .tree-item:focused, .text-field:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.button, .increment-arrow-button, .decrement-arrow-button {
+    /* -fx-background-color: linear-gradient(to top, rgb(158, 218, 221), #c3e1e1); */
+    -fx-background-color: linear-gradient(to top, rgb(144, 198, 199), #afe4e6fa);
+    -fx-border-radius: 3;
+    /* -fx-border-color: rgb(56, 92, 93); */
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, lightgrey, 10, 0, -1, 1); 
+    -fx-font: 14 "Bahnschrift";
+}
+.button:hover {
+    -fx-background-color: linear-gradient(to top, rgb(130, 179, 180), #a2b8b8)
+}
+
+.navButton {
+    -fx-background-color: linear-gradient(to top, cadetblue, #7cb6b8b1);
+    -fx-font: bold 16 "Bahnschrift";
+    -fx-border-radius: 3;
+    /* -fx-border-color: rgb(56, 92, 93); */
+    -fx-border-color: transparent;
+}
+.navButton:hover {
+    -fx-background-color: linear-gradient(to top, rgb(78, 129, 130), #4c8080b1);
+}
+
+.menuButton {
+    -fx-background-color: linear-gradient(to top, rgb(136, 190, 192), #c3e1e1);
+    -fx-effect: none;
+}
+.menuBar {
+    -fx-background-color: linear-gradient(to top, cadetblue, #5f9ea0b1);
+    /* -fx-border-color: rgb(56, 92, 93); */
+    -fx-border-color: transparent;
+}
+
+.tree-view {
+    -fx-border-radius: 3;
+    -fx-border-color: rgb(230, 230, 230);
+    -fx-effect: dropshadow(gaussian, rgb(230, 230, 230), 10, 0, -1, 1); 
+}
+
+.text-field {
+    -fx-border-radius: 3;
+    -fx-border-color: rgb(230, 230, 230);
+    -fx-effect: dropshadow(gaussian, rgb(230, 230, 230), 10, 0, -1, 1); 
+}
+
+.column-header {
+    -fx-background-color: linear-gradient(to top, rgb(158, 218, 221), #c3e1e1);
+}
+
+.table-view {
+    -fx-border-radius: 3;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgb(230, 230, 230), 10, 0, -1, 1); 
+}
+
+.tree-cell:selected {
+    -fx-background-color: rgb(196, 196, 196);
+    -fx-text-fill: black;
+}
+/* .tree-disclosure-node:closed > .arrow, .tree-disclosure-node:expanded > .arrow {
+    -fx-background-color: black;
+} */
+.keyBindingTable .table-row-cell:focused, .keyBindingTable .table-row-cell:selected {
+    -fx-background-color: transparent;
+    -fx-border-radius: 3;
+    -fx-border-color: green;
+    -fx-effect: dropshadow(gaussian, lightgreen, 10, 0, 0, 0);
+}
+.keyBindingTable .table-row-cell:focused .table-cell, .keyBindingTable .table-row-cell:selected .table-cell {
+    -fx-text-fill: black;
+}
