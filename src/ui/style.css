@@ -88,3 +88,6 @@
 .keyBindingTable .table-row-cell:focused .table-cell, .keyBindingTable .table-row-cell:selected .table-cell {
     -fx-text-fill: black;
 }
+.volumeButton {
+    -fx-font: 14 "Font Awesome 6 Free-Solid-900";
+}

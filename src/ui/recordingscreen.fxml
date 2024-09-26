@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -44,6 +45,12 @@
    <center>
       <Pane fx:id="videoPane" prefHeight="504.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
+            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefWidth="900.0" styleClass="recordingMenuBar">
+               <items>
+                  <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restart" styleClass="menuButton" />
+                  <Button fx:id="recordingHelp" mnemonicParsing="false" onAction="#showRecordingInstructions" styleClass="menuButton" text="?" />
+               </items>
+            </ToolBar>
             <MediaView fx:id="videoMediaView" fitHeight="504.0" fitWidth="900.0" />
             <Button fx:id="finishButton" contentDisplay="CENTER" disable="true" layoutX="313.0" layoutY="252.0" mnemonicParsing="false" onAction="#next" prefHeight="92.0" prefWidth="275.0" styleClass="navButton" text="Finish" textAlignment="CENTER" visible="false">
                <font>
@@ -55,7 +62,7 @@
             <Label fx:id="totalDurationLabel" alignment="CENTER_RIGHT" layoutX="811.0" layoutY="486.0" prefHeight="13.0" prefWidth="64.0" />
             <HBox alignment="CENTER" layoutX="78.0" layoutY="479.0" prefHeight="32.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="volumeButton" mnemonicParsing="false" onAction="#toggleMute" />
+                  <Button fx:id="volumeButton" mnemonicParsing="false" onAction="#toggleMute" styleClass="volumeButton" />
                   <Slider fx:id="volumeSlider">
                      <padding>
                         <Insets left="10.0" />

@@ -85,12 +85,12 @@
                         </HBox>
                         <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label prefHeight="58.0" prefWidth="219.0" text="Interval length (seconds):" textAlignment="RIGHT" wrapText="true">
+                              <Label prefHeight="27.0" prefWidth="207.0" text="Interval length (seconds):" textAlignment="RIGHT" wrapText="true">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Spinner fx:id="secondSpinner" editable="true" prefHeight="34.0" prefWidth="77.0" />
+                              <Spinner fx:id="secondSpinner" editable="true" maxWidth="75.0" />
                            </children>
                         </HBox>
                      </children>

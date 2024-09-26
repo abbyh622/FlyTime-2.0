@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import de.jensd.fx.glyphs.GlyphIcon;
 
 import java.awt.Toolkit;
 
@@ -86,6 +87,8 @@ public class RecordingController implements Initializable {
     private List<KeyCode> keys;
     private Interval currentInterval;
     private boolean isPlaying = false;
+    private FontAwesomeIconView volOn;
+    private FontAwesomeIconView volOff;
 
     private String nextScene = "endscreen.fxml";
     private Stage stage;
@@ -135,9 +138,9 @@ public class RecordingController implements Initializable {
         arenaIndex = new AtomicInteger(0);
 
         // set up volume controls
-        // FontAwesomeIconView volOff = new FontAwesomeIconView(FontAwesomeIcon.VOLUME_OFF);
-        // FontAwesomeIconView volOn = new FontAwesomeIconView(FontAwesomeIcon.VOLUME_UP);
-        // // fix this, should be the opposite way - vidplayer volume property is set by slider/volume button action
+        // volume button and slider config
+        // volOn = new FontAwesomeIconView(FontAwesomeIcon.VOLUME_UP);
+        // volOff = new FontAwesomeIconView(FontAwesomeIcon.VOLUME_OFF);
         // volumeSlider.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
         //     if (volumeSlider.getValue() > 0) {
         //         volumeButton.setGraphic(volOn);
@@ -148,9 +151,14 @@ public class RecordingController implements Initializable {
         //         videoPlayer.setVolume(0);
         //     }
         // }));
+        // starting volume
         if (App.settingsMan.boolSettings.get("videoMute").get() == true) {
-            videoPlayer.setVolume(0);
+            volumeSlider.setValue(0);
         }
+        else {
+            volumeSlider.setValue(videoPlayer.getVolume());
+        }
+
 
         // set up timestamps
         videoPlayer.currentTimeProperty().addListener(((observableValue, oldValue, newValue) -> {
@@ -292,15 +300,6 @@ public class RecordingController implements Initializable {
         });
     };
 
-    public void next(ActionEvent e) throws Exception {
-        root = FXMLLoader.load(getClass().getResource(nextScene));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(App.stylesheet);
-        stage.setScene(scene);
-        stage.show();
-    }
-
     // action when pressing volume button to toggle muted/unmuted
     // sets slider value that has a changelistener that will set the mediaplayer volume and volume button icon
     public void toggleMute() {
@@ -310,6 +309,14 @@ public class RecordingController implements Initializable {
         else {
             volumeSlider.setValue(0);
         }
+    }
+
+    public void restart() {
+
+    }
+
+    public void showRecordingInstructions() {
+
     }
 
     // to convert the Durations from media player time properties to normal readable format
@@ -334,6 +341,14 @@ public class RecordingController implements Initializable {
         }
         return showTime;
     }
-}
 
+    public void next(ActionEvent e) throws Exception {
+        root = FXMLLoader.load(getClass().getResource(nextScene));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(App.stylesheet);
+        stage.setScene(scene);
+        stage.show();
+    }
+}
 
