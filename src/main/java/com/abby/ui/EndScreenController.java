@@ -41,6 +41,7 @@ public class EndScreenController implements Initializable {
     private Scene scene;
     private Parent root;
     private String settingsScene = "/settingsscreen.fxml";
+    private String scene1 = "/screen1.fxml";
 
     private DataManager dm;
 
@@ -88,6 +89,16 @@ public class EndScreenController implements Initializable {
 
     public void settingsScreen(ActionEvent e) throws Exception {
         root = FXMLLoader.load(getClass().getResource(settingsScene));
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(App.stylesheet);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    // maybe put a confirmation dialog in this method like "exit to home screen?"
+    public void back(ActionEvent e) throws Exception {
+        root = FXMLLoader.load(getClass().getResource(scene1));
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         scene.getStylesheets().add(App.stylesheet);

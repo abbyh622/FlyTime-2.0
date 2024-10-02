@@ -15,6 +15,7 @@ import com.abby.persistence.SettingsManager;
 public class App extends Application {
 
     // should these be static? 
+    public static String dataDirectory = Util.getDataDirectory();
     public static ExperimentManager experimentMan = new ExperimentManager();        // shitty superhero names
     public static SettingsManager settingsMan = new SettingsManager();
     public static ObservableList<Arena> arenaList = FXCollections.observableArrayList(new ArrayList<Arena>());
@@ -35,11 +36,11 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-
         // fix nonexistent file/parse fail in experimentmanager and settingsmanager
         // check/fix resultConverter use in dialogs
         // put scene loader methods in one class and call them from each?
         // recordingcontroller - make width of volume button constant
+        // settingscontroller - change bidirectional binding of settings to changelistener maybe?
 
     }
 

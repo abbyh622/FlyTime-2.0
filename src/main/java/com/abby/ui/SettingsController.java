@@ -127,7 +127,7 @@ public class SettingsController implements Initializable {
         b1.setToggleGroup(group);
         b2.setToggleGroup(group);
         // bind to setting property
-        // need to bind unidirectional instead ? or use a listener to call settingsMan.setBoolSetting when changed ?
+        // or use a listener to call settingsMan.setBoolSetting when changed ?
         b1.selectedProperty().bindBidirectional(setting);
         b2.setSelected(!setting.get());
         // add to gridpane 
@@ -239,9 +239,10 @@ public class SettingsController implements Initializable {
         Optional<ButtonType> result = confirm.showAndWait();
         if (result.isPresent()) {
             if (result.get() == ButtonType.OK) {
-                // delete from stored experiments and repopulate treeview
+                // delete from stored experiments, repopulate treeview, save experiments to json file
                 App.experimentMan.experiments.remove(exp.getExperiment());
                 populateExperiments();
+                App.experimentMan.saveExperiments();
             }
         }
     }
@@ -265,9 +266,9 @@ public class SettingsController implements Initializable {
         }
     }
 
-    public void manageCumFiles(ActionEvent e) throws Exception {
+    // public void manageCumFiles(ActionEvent e) throws Exception {
 
-    }
+    // }
 
     public void back(ActionEvent e) throws Exception {
         App.settingsMan.saveSettings();       // save settings when exiting

@@ -56,7 +56,7 @@ public class Controller1 implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        App.prevScene = "/ui/screen1.fxml";
+        App.prevScene = "/screen1.fxml";
         populateExperiments();
         // create experiment tree context menu since you cant put in in the fxml file
         // ContextMenu treeMenu = new ContextMenu();

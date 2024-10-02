@@ -55,7 +55,7 @@ public class Controller2 implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        App.prevScene = "/ui/screen2.fxml";
+        App.prevScene = "/screen2.fxml";
         // set up arena table 
         TableColumn<Arena, Number> numberCol = new TableColumn<>("Number");
         numberCol.setCellValueFactory(new PropertyValueFactory<>("num"));

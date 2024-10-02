@@ -1,11 +1,20 @@
 package com.abby.main;
 
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.json.simple.parser.ContainerFactory;
+import org.json.simple.parser.JSONParser;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.input.KeyCode;
 
 // class for containing and displaying behavior key bindings 
+
 public class KeyBehaviorPair {
     private SimpleStringProperty key;
     private SimpleStringProperty behavior;
@@ -15,7 +24,7 @@ public class KeyBehaviorPair {
     public KeyBehaviorPair(char key, String behavior) {
         this.key = new SimpleStringProperty(String.valueOf(key).toUpperCase());
         this.behavior = new SimpleStringProperty(behavior);
-        this.keyCode = KeyCode.getKeyCode(String.valueOf(key));
+        this.keyCode = KeyCode.getKeyCode(String.valueOf(this.key.get()));
     }
     public KeyBehaviorPair(String behavior) {
         this.key = new SimpleStringProperty("");

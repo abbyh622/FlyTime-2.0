@@ -1,6 +1,7 @@
 package com.abby.main;
 
 import java.util.List;
+import java.io.File;
 import java.util.ArrayList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
@@ -35,5 +36,34 @@ public class Util {
             return true;
         }
         return false;
+    }
+
+    // get directory where app data is stored (settings.json, experiments.json)
+    public static String getDataDirectory() {
+        // use C:\Users\*user*\AppData\Local if exists
+        String appData = System.getProperty("user.home") + "\\AppData\\Local";
+        File appDataDir = new File(appData);
+        if (appDataDir.exists()) {
+            File flytimeData = new File(appData + "\\.flytime");
+            if (flytimeData.exists()) {
+                return flytimeData.getAbsolutePath();
+            }
+            else {
+                flytimeData.mkdir();
+                return flytimeData.getAbsolutePath();
+            }
+        }
+        // if not for some reason use a folder in the app directory
+        else {
+            String appRoot = System.getenv("user.dir");
+            File rootDataDir = new File(appRoot + "\\appdata");
+            if (rootDataDir.exists()) {
+                return rootDataDir.getAbsolutePath();
+            }
+            else {
+                rootDataDir.mkdir();
+                return rootDataDir.getAbsolutePath();
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import com.abby.main.Experiment;
 import com.abby.main.KeyBehaviorPair;
+import com.abby.main.App;
 import com.abby.main.CoolContainerFactory;
 import com.abby.exceptions.MaxBehaviorsExceededException;
 
@@ -24,7 +25,7 @@ import com.abby.exceptions.MaxBehaviorsExceededException;
 // need to rework this part 
 
 public class ExperimentManager {
-    private String experimentFile = "/experiments.json";
+    private String experimentFile = App.dataDirectory + "\\experiments.json";
     // this is the list of experiments available during runtime
     public static ArrayList<Experiment> experiments; 
 
@@ -37,8 +38,8 @@ public class ExperimentManager {
     public void loadExperiments() {
         experiments = new ArrayList<Experiment>();
         try {
-            // FileReader in = new FileReader(experimentFile);
-            InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream(experimentFile));
+            FileReader in = new FileReader(experimentFile);
+            // InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream(experimentFile));
             JSONParser parse = new JSONParser();
             ContainerFactory containers = new CoolContainerFactory();
             try {

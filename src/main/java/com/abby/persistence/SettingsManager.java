@@ -1,5 +1,6 @@
 package com.abby.persistence;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -21,11 +22,12 @@ import org.json.simple.parser.ParseException;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import com.abby.main.App;
 import com.abby.main.CoolContainerFactory;
 
 public class SettingsManager {
 
-    private String settingsFile = "/settings.json";
+    private String settingsFile = App.dataDirectory + "\\settings.json";
     public static Map<String, SimpleBooleanProperty> boolSettings;
     public static SimpleStringProperty outputDirectory;
 
@@ -35,11 +37,12 @@ public class SettingsManager {
         loadSettings();
     }
 
+
     public void loadSettings() {
         boolSettings = new HashMap<String, SimpleBooleanProperty>();
         try {
-            // FileReader in = new FileReader(settingsFile);
-            InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream(settingsFile));
+            FileReader in = new FileReader(settingsFile);
+            // InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream(settingsFile));
             JSONParser parse = new JSONParser();
             ContainerFactory containers = new CoolContainerFactory();
             try {
@@ -116,6 +119,7 @@ public class SettingsManager {
         }
         catch (IOException e) {
             System.out.println("file writer didnt work");
+            System.out.println(e.getMessage());
         }
         
     }

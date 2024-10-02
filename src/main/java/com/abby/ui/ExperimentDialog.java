@@ -136,9 +136,8 @@ public class ExperimentDialog extends Dialog<Experiment> {
                 if (this.getTitle() == "New experiment type") {
                     App.experimentMan.experiments.add(experiment);
                 }
-                // if (saveCheckBox.isSelected()) {
-                //     App.experimentMan.saveExperiments();
-                // }  
+                // save experiments to json file after any changes/additions
+                App.experimentMan.saveExperiments();
             }
         });
     }

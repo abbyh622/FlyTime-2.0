@@ -124,6 +124,8 @@ public class RecordingController implements Initializable {
             keys.add(p.getKeyCode());
         }
 
+
+
         // load and display video
         video = new Media(App.selectedVideo);
         videoPlayer = new MediaPlayer(video);
@@ -184,6 +186,7 @@ public class RecordingController implements Initializable {
     private void setEventHandlers(Scene scene) {
         scene.addEventFilter(KeyEvent.KEY_PRESSED, spaceFilter);
         scene.addEventHandler(KeyEvent.KEY_PRESSED, behaviorInput);
+        System.out.println("event handlers set");
     }
 
     // event filter to capture space bar presses - pause/resume main loop
@@ -215,20 +218,6 @@ public class RecordingController implements Initializable {
                         pause.setOnFinished(e -> keyBindingTable.getSelectionModel().clearSelection());
                         pause.play();
                     }
-
-                //     // use stream to find corresponding keybehaviorpair of keycode
-                //     KeyBehaviorPair findPair = keyBindings.stream()
-                //     .filter(kbp -> kbp.getKeyCode().equals(key))
-                //     .findFirst().orElse(null);
-                // if (findPair != null) {
-                //     // get index of keybehaviorpair in keybinding list
-                //     // select row of keybinding table by index to highlight
-                //     int idx = keyBindings.indexOf(findPair);
-                //     keyBindingTable.getSelectionModel().select(idx);
-                //     PauseTransition pause = new PauseTransition(Duration.seconds(0.5)); // 0.5 sec delay
-                //     pause.setOnFinished(e -> keyBindingTable.getSelectionModel().clearSelection());
-                //     pause.play();
-                // }
             }
         }
     };
