@@ -56,10 +56,10 @@ public class DataManager {
         outputPath = path;
     }
 
+    // get video file name minus extension
     public String getVideoName() {
-        String vid = App.selectedVideo;
-        String[] vidSplit = vid.split("/");
-        vidName = vidSplit[vidSplit.length - 1];
+        String[] vidSplit = App.selectedVideo.split("/"); 
+        vidName = vidSplit[vidSplit.length - 1].split(".")[0];      
         return vidName;
     }
 
@@ -215,7 +215,7 @@ public class DataManager {
                 }
                 writer.newLine();
             }
-            System.out.println("session file made");
+            System.out.println("session file made in " + outputPath);
         } 
         catch (IOException e) {
             e.printStackTrace();
@@ -279,7 +279,7 @@ public class DataManager {
                 }
                 writer.newLine();
             }
-            System.out.println("cumulative file updated");
+            System.out.println("cumulative file updated in " + outputPath);
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -312,7 +312,7 @@ public class DataManager {
                 }
                 writer.newLine();
             }
-            System.out.println("cumulative file made");
+            System.out.println("cumulative file made in " + outputPath);
         } 
         catch (IOException e) {
             e.printStackTrace();

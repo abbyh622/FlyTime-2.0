@@ -73,6 +73,10 @@ public class RecordingController implements Initializable {
     private Button volumeButton;
     @FXML
     private Slider volumeSlider;
+    @FXML
+    private Button restartButton;
+    @FXML
+    private Button recordingHelp;
 
     private ScheduledExecutorService executorService;
     private AtomicInteger arenaIndex;
@@ -124,8 +128,6 @@ public class RecordingController implements Initializable {
             keys.add(p.getKeyCode());
         }
 
-
-
         // load and display video
         video = new Media(App.selectedVideo);
         videoPlayer = new MediaPlayer(video);
@@ -144,7 +146,7 @@ public class RecordingController implements Initializable {
         volumeSlider.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
             if (volumeSlider.getValue() > 0) {
                 volumeButton.setGraphic(volOn);
-                videoPlayer.setVolume(volumeSlider.getValue() / 100);       // need to be *100?
+                videoPlayer.setVolume(volumeSlider.getValue() / 100); 
             }
             else {
                 volumeButton.setGraphic(volOff);
@@ -170,6 +172,10 @@ public class RecordingController implements Initializable {
             currentTimeLabel.setText(formatTime(curTime));
             timeSlider.setValue(curTime.toSeconds());
         }));
+
+        // set restart and help button icons
+        restartButton.setGraphic(new FontIcon(FontAwesome.UNDO));
+        recordingHelp.setGraphic(new FontIcon(FontAwesome.QUESTION));
 
         // whenReady sets the slider and labels to show time/duration
         videoPlayer.setOnReady(whenReady);

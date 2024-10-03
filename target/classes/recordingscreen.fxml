@@ -48,7 +48,7 @@
             <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefWidth="900.0" styleClass="recordingMenuBar">
                <items>
                   <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restart" styleClass="menuButton" />
-                  <Button fx:id="recordingHelp" mnemonicParsing="false" onAction="#showRecordingInstructions" styleClass="menuButton" text="?" />
+                  <Button fx:id="recordingHelp" mnemonicParsing="false" onAction="#showRecordingInstructions" styleClass="menuButton" />
                </items>
             </ToolBar>
             <MediaView fx:id="videoMediaView" fitHeight="504.0" fitWidth="900.0" />
@@ -62,7 +62,7 @@
             <Label fx:id="totalDurationLabel" alignment="CENTER_RIGHT" layoutX="811.0" layoutY="486.0" prefHeight="13.0" prefWidth="64.0" />
             <HBox alignment="CENTER" layoutX="78.0" layoutY="479.0" prefHeight="32.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="volumeButton" mnemonicParsing="false" onAction="#toggleMute" styleClass="volumeButton" />
+                  <Button fx:id="volumeButton" minWidth="28.0" mnemonicParsing="false" onAction="#toggleMute" prefWidth="28.0" styleClass="volumeButton" />
                   <Slider fx:id="volumeSlider">
                      <padding>
                         <Insets left="10.0" />

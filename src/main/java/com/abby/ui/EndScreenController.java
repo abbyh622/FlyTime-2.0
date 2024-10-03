@@ -50,6 +50,7 @@ public class EndScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        App.prevScene = "/endscreen.fxml";
         dm = new DataManager();
 
         // set text area to monospaced font so spacing works right
@@ -62,8 +63,9 @@ public class EndScreenController implements Initializable {
 
     public void exportSession() {
         // get video name without ext and create path, if file already exists show dialog asking to overwrite or make new file
-        String fileName = dm.getVideoName().split(".")[0] + ".txt"; 
-        dm.setOutputPath(App.settingsMan.outputDirectory.get() + fileName);
+        // String fileName = dm.getVideoName().split(".")[0] + ".txt"; 
+        String fileName = dm.getVideoName() + ".txt"; 
+        dm.setOutputPath(App.settingsMan.outputDirectory.get() + "\\" + fileName);
         dm.writeSessionFile();
     }
 
@@ -71,7 +73,7 @@ public class EndScreenController implements Initializable {
         // create file name as [experiment name]Cumulative or something and create path, if file already exists just make a new one
         // does not set the new file to be used as the experiment's cumulative file in settings, must be set manually
         String fileName = App.selectedExperiment.getName() + "_cumulative.txt";
-        dm.setOutputPath(App.settingsMan.outputDirectory.get() + fileName);
+        dm.setOutputPath(App.settingsMan.outputDirectory.get() + "\\" + fileName);
         dm.createCumulativeFile();
     }
 
