@@ -17,11 +17,14 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
 import com.abby.main.App;
@@ -70,6 +73,7 @@ public class Controller1 implements Initializable {
         videoPathField.textProperty().addListener(((observableValue, oldValue, newValue) -> {
             getPath(newValue);
         }));
+
     }
 
     private void populateExperiments() {
@@ -147,79 +151,6 @@ public class Controller1 implements Initializable {
         }
     }
 
-    // only having key bindings for experiments editable here i think
-    // because if experiment has cumulative data file it needs a new one after editing behaviors
-    // new experimentdialog constructor w/ bool param for restricted editing
-    // public void editExperiment() {
-    //     TreeItem<TreeDisplayable> selected = experimentTree.getSelectionModel().getSelectedItem();
-    //     if (selected.getValue() instanceof ExperimentItem) {
-    //         ExperimentItem experimentItem = (ExperimentItem) selected.getValue();
-    //         Dialog<Experiment> dialog = new ExperimentDialog(experimentItem.getExperiment());
-    //         dialog.showAndWait();
-    //         populateExperiments();
-    //     }
-    // }
-
-
-    // public void populateExperiments() {
-    //     // root of tree view
-    //     TreeItem<String> rootItem = new TreeItem<>("experiments");
-    //     rootItem.setExpanded(true);
-    //     // add experiments as children
-    //     for (Experiment e : App.experimentMan.experiments) {
-    //         TreeItem<String> expmntItem = new TreeItem<>(e.getName());      // is no param in definition okay ?
-    //         for (KeyBehaviorPair p : e.getBehaviorPairs()) {
-    //             TreeItem<String> behav = new TreeItem<>(p.getBehavior());
-    //             expmntItem.getChildren().add(behav);
-    //         }
-    //         rootItem.getChildren().add(expmntItem);
-    //     }
-    //     // set root to display
-    //     experimentTree.setRoot(rootItem);
-
-    //     // make only experiments selectable (not behaviors)
-    //     // if the new selected item's parent is not root, clear selection 
-    //     experimentTree.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-    //         if (newValue != null && newValue.getParent() != rootItem) {
-    //             Platform.runLater(() -> experimentTree.getSelectionModel().clearSelection());
-    //         }
-    //     });
-    // }
- 
-    // can this be changed to run only when a treeitem is selected instead ?
-    // set selected experiment 
-    // public void selectItem() {
-    //     TreeItem<String> selectedItem = experimentTree.getSelectionModel().getSelectedItem();
-    //     if (selectedItem != null) {
-    //         String selectedExperiment = selectedItem.getValue();
-    //         // find experiment from selected name and set App.selectedExperiment
-    //         for (Experiment e : App.experimentMan.experiments) {
-    //             if (selectedExperiment == e.getName() && (App.selectedExperiment == null || selectedExperiment != App.selectedExperiment.getName())) {
-    //                 App.selectedExperiment = e;
-    //             }
-    //         }
-    //     }
-    // }
-
-    // public void createExperiment() {
-    //     Dialog<Experiment> dialog = new ExperimentDialog(new Experiment());
-    //     Optional<Experiment> result = dialog.showAndWait();
-    //     // add new experiment to treeview
-    //     if (result.isPresent()) {
-    //         if (result.get() instanceof Experiment) {
-    //             TreeItem<String> newExpmntItem = new TreeItem<>(result.get().getName());
-    //             for (KeyBehaviorPair p : result.get().getBehaviorPairs()) {
-    //                 TreeItem<String> behav = new TreeItem<>(p.getBehavior());
-    //                 newExpmntItem.getChildren().add(behav);
-    //             }
-    //             experimentTree.getRoot().getChildren().add(newExpmntItem);
-    //             // make new experiment the selected item and selectedExperiment
-    //             experimentTree.getSelectionModel().selectLast();
-    //             selectItem();
-    //         }
-    //     } 
-    // }
-
     public void openFiles(ActionEvent e) {
         // do filechooser then call validateVideo then selectVideo
         FileChooser fc = new FileChooser();
@@ -296,7 +227,6 @@ public class Controller1 implements Initializable {
         scene.getStylesheets().add(App.stylesheet);
         stage.setScene(scene);
         stage.show();
-
     }
 
     public void settingsScreen(ActionEvent e) throws Exception {
