@@ -58,8 +58,8 @@ public class DataManager {
 
     // get video file name minus extension
     public String getVideoName() {
-        String[] vidSplit = App.selectedVideo.split("/"); 
-        vidName = vidSplit[vidSplit.length - 1].split(".")[0];      
+        String[] vidSplit = App.selectedVideo.split("/");         
+        vidName = vidSplit[vidSplit.length - 1].split("[.]")[0];      
         return vidName;
     }
 

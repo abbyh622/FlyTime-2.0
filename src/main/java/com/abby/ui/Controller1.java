@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -28,6 +29,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
 import com.abby.main.App;
+import com.abby.main.DataManager;
 import com.abby.main.Experiment;
 import com.abby.main.ExperimentItem;
 import com.abby.main.KeyBehaviorPair;
@@ -154,7 +156,9 @@ public class Controller1 implements Initializable {
     public void openFiles(ActionEvent e) {
         // do filechooser then call validateVideo then selectVideo
         FileChooser fc = new FileChooser();
-        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All files", "*.*"), new FileChooser.ExtensionFilter("MP4", "*.mp4"));
+        ExtensionFilter mp4Filter = new ExtensionFilter("MP4", "*.mp4");
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All files", "*.*"), mp4Filter);
+        fc.setSelectedExtensionFilter(mp4Filter);
         fc.setTitle("Select Video");
         Stage fileStage = new Stage();
 

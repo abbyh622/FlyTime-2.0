@@ -43,6 +43,7 @@ public class EndScreenController implements Initializable {
     private String settingsScene = "/settingsscreen.fxml";
     private String scene1 = "/screen1.fxml";
 
+    // should datamanager be static ?
     private DataManager dm;
 
     @FXML
