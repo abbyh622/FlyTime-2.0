@@ -92,11 +92,6 @@ public class RecordingController implements Initializable {
     private FontIcon volOn;
     private FontIcon volOff;
 
-    private String nextScene = "/endscreen.fxml";
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     // toolkit for beeping
     Toolkit tool = Toolkit.getDefaultToolkit();
 
@@ -340,12 +335,7 @@ public class RecordingController implements Initializable {
     }
 
     public void next(ActionEvent e) throws Exception {
-        root = FXMLLoader.load(getClass().getResource(nextScene));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(App.stylesheet);
-        stage.setScene(scene);
-        stage.show();
+        App.ctrl.switchScene(e, App.ctrl.endScene);
     }
 }
 

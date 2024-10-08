@@ -5,18 +5,13 @@ import java.net.URL;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -29,6 +24,7 @@ import javafx.scene.control.TreeView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+
 import com.abby.main.App;
 import com.abby.main.Experiment;
 import com.abby.main.ExperimentItem;
@@ -45,8 +41,7 @@ import com.abby.main.Util;
 
 public class SettingsController implements Initializable {
     private Stage stage;
-    private Scene scene;
-    private Parent root;
+
     private Map<String, SimpleBooleanProperty> boolSettings;
     private SimpleStringProperty outputPath = App.settingsMan.outputDirectory;
 
@@ -272,11 +267,6 @@ public class SettingsController implements Initializable {
 
     public void back(ActionEvent e) throws Exception {
         App.settingsMan.saveSettings();       // save settings when exiting
-        root = FXMLLoader.load(getClass().getResource(App.prevScene));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(App.stylesheet);
-        stage.setScene(scene);
-        stage.show();
+        App.ctrl.switchScene(e, App.ctrl.prevScene);
     }
 }

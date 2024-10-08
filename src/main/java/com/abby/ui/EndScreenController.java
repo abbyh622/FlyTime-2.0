@@ -3,7 +3,6 @@ package com.abby.ui;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,35 +13,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 import com.abby.main.*;
 
-// whats the best way to output bool data? 0/1, empty/X, ?
-// should probably be a setting that can be changed 
-
-// data columns - start time, behavior 1, behavior 2, behavior 3
-// display/export data transposed by default?
-
-//      Arena 1 - CS male 2-5 days x4
-// | start time | wing ext | chase | chain |
-// |  0:00:000  |     X    |       |       |
-// |  0:05:000  |     X    |   X   |       |
-// |  0:10:000  |          |       |       |  
-// |  0:15:000  |     x    |       |       |
-// |  0:20:000  |          |   x   |   x   |
-// total: wing ext = 3, chase = 2, chain = 1
-
-// | start time | 0:00:000 | 0:05:000 | 0:10:000 |
-// |  wing ext  |     X    |     X    |          |
-// |   chase    |          |     X    |          |
-// |   chain    |          |          |          |
 
 public class EndScreenController implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private String settingsScene = "/settingsscreen.fxml";
-    private String scene1 = "/screen1.fxml";
-
     // should datamanager be static ?
     private DataManager dm;
 
@@ -51,7 +26,7 @@ public class EndScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        App.prevScene = "/endscreen.fxml";
+        App.ctrl.prevScene = AppController.endScene;
         dm = new DataManager();
 
         // set text area to monospaced font so spacing works right
@@ -91,21 +66,11 @@ public class EndScreenController implements Initializable {
     // should session data file be automatically exported? i think probably yes  
 
     public void settingsScreen(ActionEvent e) throws Exception {
-        root = FXMLLoader.load(getClass().getResource(settingsScene));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(App.stylesheet);
-        stage.setScene(scene);
-        stage.show();
+        App.ctrl.switchScene(e, App.ctrl.settingsScene);
     }
 
     // maybe put a confirmation dialog in this method like "exit to home screen?"
-    public void back(ActionEvent e) throws Exception {
-        root = FXMLLoader.load(getClass().getResource(scene1));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(App.stylesheet);
-        stage.setScene(scene);
-        stage.show();
+    public void done(ActionEvent e) throws Exception {
+        App.ctrl.switchScene(e, App.ctrl.scene1);
     }
 }

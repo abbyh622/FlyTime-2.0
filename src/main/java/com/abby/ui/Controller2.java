@@ -7,11 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -34,13 +30,7 @@ import com.abby.main.Util;
 // seconds input field not restricted, arrows dont work
 
 public class Controller2 implements Initializable {
-
     private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private String prevScene = "/screen1.fxml";
-    private String nextScene = "/recordingscreen.fxml";
-    private String settingsScene = "/settingsscreen.fxml";
 
     @FXML 
     private HBox experimentHbox;
@@ -50,12 +40,13 @@ public class Controller2 implements Initializable {
     private TableView<KeyBehaviorPair> behaviorTable;
     @FXML
     private Spinner<Integer> secondSpinner;
+    private Integer sec;
     // should keybehaviorpairs list be in app instead
     private ObservableList<KeyBehaviorPair> keyBindings = FXCollections.observableArrayList(App.selectedExperiment.getBehaviorPairs());
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        App.prevScene = "/screen2.fxml";
+        App.ctrl.prevScene = AppController.scene2;
         // set up arena table 
         TableColumn<Arena, Number> numberCol = new TableColumn<>("Number");
         numberCol.setCellValueFactory(new PropertyValueFactory<>("num"));
@@ -87,7 +78,14 @@ public class Controller2 implements Initializable {
         behaviorTable.setSelectionModel(null);
 
         // set up spinner
-        SpinnerValueFactory<Integer> valFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 60, 5);
+        if (App.seconds != null) {
+            sec = App.seconds;
+        }
+        else {
+            // default if not set yet
+            sec = 5;    
+        }
+        SpinnerValueFactory<Integer> valFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 60, sec);
         secondSpinner.setValueFactory(valFactory);
     }
 
@@ -127,6 +125,10 @@ public class Controller2 implements Initializable {
         if (result.isPresent()) {
             if (result.get() == ButtonType.OK) {
                 App.arenaList.remove(selected);
+                // reset arena numbers after deleting
+                for (int i = 0; i < App.arenaList.size(); i++) {
+                    App.arenaList.get(i).setNum(i + 1);
+                }
             }
         }
     }
@@ -139,31 +141,15 @@ public class Controller2 implements Initializable {
             return;
         }
         App.seconds = secondSpinner.getValue();
-
-        root = FXMLLoader.load(getClass().getResource(nextScene));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(App.stylesheet);
-        stage.setScene(scene);
-        stage.show();
+        App.ctrl.switchScene(e, App.ctrl.recordingScene);
     }
     
     public void back(ActionEvent e) throws Exception {
         // go to previous screen
-        root = FXMLLoader.load(getClass().getResource(prevScene));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(App.stylesheet);
-        stage.setScene(scene);
-        stage.show();
+        App.ctrl.switchScene(e, App.ctrl.scene1);
     }
 
     public void settingsScreen(ActionEvent e) throws Exception {
-        root = FXMLLoader.load(getClass().getResource(settingsScene));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(App.stylesheet);
-        stage.setScene(scene);
-        stage.show();
+        App.ctrl.switchScene(e, App.ctrl.settingsScene);
     }
 }

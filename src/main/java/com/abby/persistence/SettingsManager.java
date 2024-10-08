@@ -1,24 +1,19 @@
 package com.abby.persistence;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ContainerFactory;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -145,12 +140,12 @@ public class SettingsManager {
 
     // this is kind of unnecessary i think
     // generic method to get boolean setting values
-    public SimpleBooleanProperty getBoolSetting(String name) {
-        return boolSettings.get(name);
-    }
-    // generic method to set settings with boolean values
-    public void setBoolSetting(String name, boolean newValue) {
-        boolSettings.replace(name, new SimpleBooleanProperty(boolSettings, name, newValue));
-    }
+    // public SimpleBooleanProperty getBoolSetting(String name) {
+    //     return boolSettings.get(name);
+    // }
+    // // generic method to set settings with boolean values
+    // public void setBoolSetting(String name, boolean newValue) {
+    //     boolSettings.replace(name, new SimpleBooleanProperty(boolSettings, name, newValue));
+    // }
 
 }

@@ -1,9 +1,9 @@
 package com.abby.main;
-// Arena (roi) contains a description of the flies (user input) and a list of intervals that will be added to
 
 import java.util.ArrayList;
-
 import javafx.beans.property.SimpleStringProperty;
+
+// Arena (roi) contains a description of the flies (user input) and a list of intervals that will be added to
 
 public class Arena {
     // using javafx propterties for binding to ui elements

@@ -11,5 +11,5 @@ module com.abby {
     requires org.kordamp.ikonli.fontawesome;
 
     opens com.abby.main to javafx.base, javafx.graphics, javafx.fxml;
-    opens com.abby.ui to javafx.fxml;
+    opens com.abby.ui to javafx.base, javafx.graphics, javafx.fxml;
 }

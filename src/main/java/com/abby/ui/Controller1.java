@@ -6,30 +6,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.scene.Scene;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
 import com.abby.main.App;
-import com.abby.main.DataManager;
 import com.abby.main.Experiment;
 import com.abby.main.ExperimentItem;
 import com.abby.main.KeyBehaviorPair;
@@ -40,6 +31,7 @@ import com.abby.main.Util;
 
  
 public class Controller1 implements Initializable {
+    private Stage stage;
 
     @FXML
     private TreeView<TreeDisplayable> experimentTree;
@@ -48,20 +40,14 @@ public class Controller1 implements Initializable {
     @FXML 
     private TextField videoPathField;
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    private String nextScene = "/screen2.fxml";
-    private String settingsScene = "/settingsscreen.fxml";
-
-    private Experiment selectedExperiment;
-    private SimpleStringProperty videoPath = new SimpleStringProperty();
+    private Experiment selectedExperiment = App.selectedExperiment;
+    private SimpleStringProperty videoPath = new SimpleStringProperty(App.selectedVideo);
     // MediaPlayer works with these types of video files, nobody will prob have .flv but just including it bc why not
     private List validFileTypes = Arrays.asList(new String[] {".mp4", ".m4a", ".m4v", ".flv"});
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        App.prevScene = "/screen1.fxml";
+        App.ctrl.prevScene = AppController.scene1;
         populateExperiments();
         // create experiment tree context menu since you cant put in in the fxml file
         // ContextMenu treeMenu = new ContextMenu();
@@ -75,7 +61,6 @@ public class Controller1 implements Initializable {
         videoPathField.textProperty().addListener(((observableValue, oldValue, newValue) -> {
             getPath(newValue);
         }));
-
     }
 
     private void populateExperiments() {
@@ -225,20 +210,10 @@ public class Controller1 implements Initializable {
             Util.showError(stage, "Select a video");
             return;
         }
-        root = FXMLLoader.load(getClass().getResource(nextScene));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(App.stylesheet);
-        stage.setScene(scene);
-        stage.show();
+        App.ctrl.switchScene(e, App.ctrl.scene2);
     }
 
     public void settingsScreen(ActionEvent e) throws Exception {
-        root = FXMLLoader.load(getClass().getResource(settingsScene));
-        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.getStylesheets().add(App.stylesheet);
-        stage.setScene(scene);
-        stage.show();
+        App.ctrl.switchScene(e, App.ctrl.settingsScene);
     }
 }

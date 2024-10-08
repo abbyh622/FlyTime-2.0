@@ -1,27 +1,14 @@
 package com.abby.main;
 
-// Experiments are the sets of behaviors to be scored, premade experiments can be selected from (and modified?)
-// can make new experiments with custom behavior sets and save them to be available to select in future runs, info stored in json file
-
-// make option to change key bindings, can use 1-9 as default when creating new experiments
-// hack: use ascii values of the keys pressed as the behavior map key so u dont have to change the map params hehe
-// should be fine bc addBehavior and setBehavior use the size of map not the key values
-
-// currently limited to 9 behaviors, can think about changing that later if needed
-
-import java.util.HashMap;
-import java.util.Map;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.beans.property.SimpleStringProperty;
 
-// import exceptions.InvalidCharException;
 import com.abby.exceptions.MaxBehaviorsExceededException;
 
-// change behaviors to be keybehaviorpairs or something
-// should have the keycode in there 
+// Experiments are the sets of behaviors to be scored, premade experiments can be selected from and modified
+// can make new experiments with custom behavior sets and save them to be available to select in future runs, info stored in json file
+// currently limited to 9 behaviors, can think about changing that later if needed
 
 public class Experiment {
     private SimpleStringProperty name;

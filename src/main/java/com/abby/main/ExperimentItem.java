@@ -1,11 +1,10 @@
 package com.abby.main;
 
 import java.util.List;
-import javafx.beans.property.SimpleStringProperty;
+
 import com.abby.ui.TreeDisplayable;
 
-
-// wrapper class for Experiments to use in TreeView
+// container class for Experiments to use in TreeView
 
 public class ExperimentItem implements TreeDisplayable {
     private Experiment experiment;

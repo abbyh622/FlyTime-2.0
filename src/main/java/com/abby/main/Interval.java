@@ -1,14 +1,14 @@
 package com.abby.main;
+
+import java.util.HashMap;
+import java.util.Map;
+import javafx.scene.input.KeyCode;
+
 // Interval contains the record of whether each behavior happened in the given roi during the given time interval
 // scores maps the input key for each behavior to a bool for whether it happened
 // every time the timer beeps a new interval object is created and its scores values are initialized to false
 // if a key is pressed corresponding to a behavior (1 for wing ext etc) then in that Interval scores[key] is updated to true
 // when the timer beeps again the Interval object is added to the list of Intervals for that roi and a new Interval is created for the next roi
-
-import java.util.HashMap;
-import java.util.Map;
-
-import javafx.scene.input.KeyCode;
 
 public class Interval {
     private String startTime;   // timestamp when interval begins, not sure if should be string 

@@ -11,19 +11,21 @@ import javafx.scene.Parent;
 
 import com.abby.persistence.ExperimentManager;
 import com.abby.persistence.SettingsManager;
+import com.abby.ui.AppController;
 
 public class App extends Application {
 
     // should these be static? 
     public static String dataDirectory = Util.getDataDirectory();
-    public static ExperimentManager experimentMan = new ExperimentManager();        // shitty superhero names
     public static SettingsManager settingsMan = new SettingsManager();
+    public static ExperimentManager experimentMan = new ExperimentManager(); 
+    public static AppController ctrl = new AppController();
+    
     public static ObservableList<Arena> arenaList = FXCollections.observableArrayList(new ArrayList<Arena>());
     public static Experiment selectedExperiment;            // the experiment configuration to use
     public static String selectedVideo;                     // URI of the video to use
     public static Integer seconds;                          // number of seconds to observe each arena in a cycle
 
-    public static String prevScene;                         // the previous scene visited, updated each scene change
     public static String stylesheet = "/style.css";
     private String initialScene = "/screen1.fxml"; 
 
@@ -36,10 +38,9 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        // fix - going back to scene1 the selected expmnt doesnt show, back to scene2 the seconds is reset
         // fix nonexistent file/parse fail in experimentmanager and settingsmanager
         // check/fix resultConverter use in dialogs
-        // put scene loader methods in one class and call them from each?
-        // recordingcontroller - make width of volume button constant
         // settingscontroller - change bidirectional binding of settings to changelistener maybe?
 
     }
