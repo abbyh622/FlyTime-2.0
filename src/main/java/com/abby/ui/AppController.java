@@ -28,16 +28,19 @@ public class AppController {
     private Parent root;
 
     public AppController() {
+
+    }
+
+    public void switchScene(ActionEvent e, String newScene) throws Exception {
         // appearancemode true = dark mode on
+        // here so switching modes will appear next scene change
         if (App.settingsMan.boolSettings.get("appearanceMode").get()) {
             stylesheet = "/darkstyle.css";
         }
         else {
             stylesheet = "/style.css";
         }
-    }
 
-    public void switchScene(ActionEvent e, String newScene) throws Exception {
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         curWidth = stage.getWidth();
         curHeight = stage.getHeight();
@@ -49,7 +52,7 @@ public class AppController {
 
         if (newScene == recordingScene && (curWidth < 900 || curHeight < 700)) {
             stage.setWidth(900);
-            stage.setHeight(700);
+            stage.setHeight(750);
         }
         else {
             stage.setWidth(curWidth);

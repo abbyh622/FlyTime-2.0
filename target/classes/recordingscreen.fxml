@@ -15,25 +15,18 @@
 
 <BorderPane prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.abby.ui.RecordingController">
    <bottom>
-      <HBox fx:id="bottomHbox" alignment="CENTER_LEFT" prefHeight="191.0" prefWidth="900.0" spacing="20.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="bottomHbox" alignment="CENTER" prefHeight="156.0" prefWidth="900.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="keyBindingTable" prefHeight="170.0" prefWidth="330.0" styleClass="keyBindingTable">
+            <TableView fx:id="keyBindingTable" prefHeight="151.0" prefWidth="290.0" styleClass="keyBindingTable">
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <VBox fx:id="curArenaVbox" alignment="CENTER" prefHeight="170.0" prefWidth="530.0" spacing="10.0">
+            <HBox prefHeight="151.0" prefWidth="291.0" HBox.hgrow="ALWAYS" />
+            <VBox fx:id="curArenaVbox" alignment="CENTER" prefHeight="151.0" prefWidth="290.0" spacing="10.0">
                <children>
-                  <Label alignment="CENTER" prefHeight="46.0" prefWidth="560.0" styleClass="recordingHeader" text="Current Arena">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="curArenaLabel" alignment="CENTER" prefHeight="110.0" prefWidth="560.0">
-                     <font>
-                        <Font size="72.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="curArenaTitle" alignment="CENTER" prefHeight="46.0" prefWidth="560.0" styleClass="recordingArenaHeader" text="Current Arena" />
+                  <Label fx:id="curArenaLabel" alignment="CENTER" prefHeight="110.0" prefWidth="560.0" styleClass="recordingArenaLabel" />
                </children>
             </VBox>
          </children>
@@ -45,25 +38,19 @@
    <center>
       <Pane fx:id="videoPane" prefHeight="504.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
-            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefWidth="900.0" styleClass="recordingMenuBar">
-               <items>
-                  <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restart" styleClass="menuButton" />
-                  <Button fx:id="recordingHelp" mnemonicParsing="false" onAction="#showRecordingInstructions" styleClass="menuButton" />
-               </items>
-            </ToolBar>
-            <MediaView fx:id="videoMediaView" fitHeight="504.0" fitWidth="900.0" />
+            <MediaView fx:id="videoMediaView" fitHeight="506.0" fitWidth="900.0" layoutX="-14.0" layoutY="-1.0" />
             <Button fx:id="finishButton" contentDisplay="CENTER" disable="true" layoutX="313.0" layoutY="252.0" mnemonicParsing="false" onAction="#next" prefHeight="92.0" prefWidth="275.0" styleClass="navButton" text="Finish" textAlignment="CENTER" visible="false">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Button>
-            <Slider fx:id="timeSlider" layoutX="25.0" layoutY="467.0" prefHeight="14.0" prefWidth="850.0" />
-            <Label fx:id="currentTimeLabel" layoutX="25.0" layoutY="486.0" prefHeight="17.0" prefWidth="53.0" />
-            <Label fx:id="totalDurationLabel" alignment="CENTER_RIGHT" layoutX="811.0" layoutY="486.0" prefHeight="13.0" prefWidth="64.0" />
-            <HBox alignment="CENTER" layoutX="78.0" layoutY="479.0" prefHeight="32.0" prefWidth="200.0">
+            <Slider fx:id="timeSlider" layoutX="26.0" layoutY="457.0" prefHeight="14.0" prefWidth="850.0" styleClass="recordingTimeSlider" />
+            <Label fx:id="currentTimeLabel" layoutX="26.0" layoutY="478.0" prefHeight="17.0" prefWidth="53.0" styleClass="timeLabel" />
+            <Label fx:id="totalDurationLabel" alignment="CENTER_RIGHT" layoutX="812.0" layoutY="478.0" prefHeight="13.0" prefWidth="64.0" styleClass="timeLabel" />
+            <HBox alignment="CENTER" layoutX="78.0" layoutY="470.0" prefHeight="32.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="volumeButton" minWidth="28.0" mnemonicParsing="false" onAction="#toggleMute" prefWidth="28.0" styleClass="volumeButton" />
-                  <Slider fx:id="volumeSlider">
+                  <Button fx:id="volumeButton" minWidth="28.0" mnemonicParsing="false" onAction="#toggleMute" prefWidth="28.0" styleClass="recordingVolumeButton" />
+                  <Slider fx:id="volumeSlider" styleClass="recordingVolumeSlider">
                      <padding>
                         <Insets left="10.0" />
                      </padding>
@@ -73,4 +60,12 @@
          </children>
       </Pane>
    </center>
+   <top>
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefWidth="900.0" styleClass="menuBar" BorderPane.alignment="CENTER">
+         <items>
+            <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restart" styleClass="menuButton" />
+            <Button fx:id="recordingHelp" mnemonicParsing="false" onAction="#showRecordingInstructions" styleClass="menuButton" />
+         </items>
+      </ToolBar>
+   </top>
 </BorderPane>

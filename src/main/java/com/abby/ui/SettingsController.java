@@ -113,10 +113,10 @@ public class SettingsController implements Initializable {
         // using radio buttons for functionality (not deselectable) but want them to look like regular buttons
         RadioButton b1 = new RadioButton("On");
         b1.getStyleClass().remove("radio-button");
-        b1.getStyleClass().add("toggle-button");
+        b1.getStyleClass().addAll("toggle-button", "button");
         RadioButton b2 = new RadioButton("Off");
         b2.getStyleClass().remove("radio-button");
-        b2.getStyleClass().add("toggle-button");
+        b2.getStyleClass().addAll("toggle-button", "button");
 
         // add to toggle group
         b1.setToggleGroup(group);

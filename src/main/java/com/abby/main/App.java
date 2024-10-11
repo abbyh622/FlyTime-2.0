@@ -26,11 +26,17 @@ public class App extends Application {
     public static String selectedVideo;                     // URI of the video to use
     public static Integer seconds;                          // number of seconds to observe each arena in a cycle
 
-    public static String stylesheet = "/style.css";
+    public static String stylesheet;
     private String initialScene = "/screen1.fxml"; 
 
     @Override
     public void start(Stage primaryStage) throws Exception { 
+        if (App.settingsMan.boolSettings.get("appearanceMode").get()) {
+            stylesheet = "/darkstyle.css";
+        }
+        else {
+            stylesheet = "/style.css";
+        }
         Parent root = FXMLLoader.load(getClass().getResource(initialScene));
         primaryStage.setTitle("flytime :)");
         Scene scene = new Scene(root);
@@ -39,6 +45,7 @@ public class App extends Application {
         primaryStage.show();
 
         // fix - going back to scene1 the selected expmnt doesnt show, back to scene2 the seconds is reset
+        // scene2 seconds spinner sometimes goes down when up button clicked
         // fix nonexistent file/parse fail in experimentmanager and settingsmanager
         // check/fix resultConverter use in dialogs
         // settingscontroller - change bidirectional binding of settings to changelistener maybe?

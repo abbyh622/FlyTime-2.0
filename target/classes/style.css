@@ -1,16 +1,25 @@
 
-.root {
+/* .root {
     -fx-font-family: "Bahnschrift";
-}
+} */
 
 .title {
-    -fx-font: bold 28 "Bahnschrift";
+    -fx-font: bold 28 "System";
 }
 .header {
-    -fx-font: bold 20 "Bahnschrift";
+    -fx-font: bold 20 "System";
+}
+.recordingArenaHeader {
+    -fx-font: 20 "System";
+}
+.recordingArenaLabel {
+    -fx-font: bold 64 "System";
+}
+.timeLabel {
+    -fx-font: 12 "System";
 }
 
-.button:focused, .table-view:focused, .tree-view:focused, .tree-cell:focused, .tree-item:focused, .text-field:focused {
+.button:focused, .table-view:focused, .tree-view:focused, .tree-cell:focused, .tree-table-cell:focused, .tree-item:focused, .text-field:focused {
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
     -fx-border-color: transparent;
@@ -23,7 +32,7 @@
     /* -fx-border-color: rgb(56, 92, 93); */
     -fx-border-color: transparent;
     -fx-effect: dropshadow(gaussian, lightgrey, 10, 0, -1, 1); 
-    -fx-font: 14 "Bahnschrift";
+    /* -fx-font: 14 "Bahnschrift"; */
 }
 .button:hover {
     -fx-background-color: linear-gradient(to top, rgb(130, 179, 180), #a2b8b8)
@@ -40,10 +49,16 @@
     -fx-background-color: linear-gradient(to top, rgb(78, 129, 130), #4c8080b1);
 }
 
+.recordingVolumeButton {
+    -fx-opacity: 0.75;
+    -fx-font: 14 "Font Awesome 6 Free-Solid-900";
+}
+
 .menuButton {
     -fx-background-color: linear-gradient(to top, rgb(136, 190, 192), #c3e1e1);
     -fx-effect: none;
 }
+
 .menuBar {
     -fx-background-color: linear-gradient(to top, cadetblue, #5f9ea0b1);
     /* -fx-border-color: rgb(56, 92, 93); */
@@ -71,9 +86,16 @@
     -fx-border-color: transparent;
     -fx-effect: dropshadow(gaussian, rgb(230, 230, 230), 10, 0, -1, 1); 
 }
+.table-row-cell, table-row-cell:focused {
+    -fx-text-fill: black;
+}
+.table-row-cell:selected {
+    -fx-background-color: rgb(245, 235, 145);
+    -fx-text-fill: black;
+}
 
 .tree-cell:selected {
-    -fx-background-color: rgb(196, 196, 196);
+    -fx-background-color: rgb(245, 235, 145);
     -fx-text-fill: black;
 }
 /* .tree-disclosure-node:closed > .arrow, .tree-disclosure-node:expanded > .arrow {
@@ -88,6 +110,9 @@
 .keyBindingTable .table-row-cell:focused .table-cell, .keyBindingTable .table-row-cell:selected .table-cell {
     -fx-text-fill: black;
 }
-.volumeButton {
-    -fx-font: 14 "Font Awesome 6 Free-Solid-900";
+.recordingTimeSlider {
+    -fx-opacity: 0.75;
+}
+.recordingVolumeSlider {
+    -fx-opacity: 0.75;
 }
