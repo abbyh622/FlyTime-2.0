@@ -17,7 +17,7 @@ public class AppController {
     public static String scene2 = "/screen2.fxml";
     public static String recordingScene = "/recordingscreen.fxml";
     public static String endScene = "/endscreen.fxml";
-    public static String settingsScene = "/settingsscreen.fxml";
+    public static String settingsScene = "/settingsscreenalt.fxml";
     public String prevScene;           // previous scene visited, updated each scene change except recording (for returning from settings scene)
     private String stylesheet;
     private double curWidth;           // current window dimensions, to preserve size when switching scenes

@@ -35,6 +35,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -69,6 +70,8 @@ public class RecordingController implements Initializable {
     private Label currentTimeLabel;
     @FXML
     private Button finishButton;
+    @FXML
+    private HBox volumeHbox;
     @FXML 
     private Button volumeButton;
     @FXML
@@ -160,6 +163,15 @@ public class RecordingController implements Initializable {
             volumeButton.setGraphic(volOn);
             videoPlayer.setVolume(1);
         }
+        // make slider visible when volume button hovered
+        volumeSlider.setVisible(false);
+        volumeHbox.setOnMouseEntered(e -> volumeSlider.setVisible(true));
+        // wait .5 sec then hide slider
+        volumeHbox.setOnMouseExited(e2 -> {
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
+            pause.setOnFinished(e3 -> volumeSlider.setVisible(false));
+            pause.play();
+        });
 
         // set up timestamps
         videoPlayer.currentTimeProperty().addListener(((observableValue, oldValue, newValue) -> {

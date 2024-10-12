@@ -30,6 +30,10 @@ public class SettingsManager {
     // static instantiated when app starts, so settings are loaded right away
     public SettingsManager() {
         loadSettings();
+
+        // for (Entry<String, SimpleBooleanProperty> s : boolSettings.entrySet()) {
+        //     System.out.println(s.getKey() + ": " + s.getValue().getName() + " = " + s.getValue().get());
+        // } 
     }
 
 

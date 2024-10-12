@@ -1,8 +1,4 @@
 
-/* .root {
-    -fx-font-family: "Bahnschrift";
-} */
-
 .title {
     -fx-font: bold 28 "System";
 }
@@ -16,7 +12,9 @@
     -fx-font: bold 64 "System";
 }
 .timeLabel {
-    -fx-font: 12 "System";
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-font: 14 "System";
+    -fx-opacity: 0.75;
 }
 
 .button:focused, .table-view:focused, .tree-view:focused, .tree-cell:focused, .tree-table-cell:focused, .tree-item:focused, .text-field:focused {
@@ -26,23 +24,23 @@
 }
 
 .button, .increment-arrow-button, .decrement-arrow-button {
-    /* -fx-background-color: linear-gradient(to top, rgb(158, 218, 221), #c3e1e1); */
-    -fx-background-color: linear-gradient(to top, rgb(144, 198, 199), #afe4e6fa);
+    -fx-background-color: linear-gradient(to top, rgb(144, 198, 199), rgb(175, 228, 230));
     -fx-border-radius: 3;
-    /* -fx-border-color: rgb(56, 92, 93); */
     -fx-border-color: transparent;
     -fx-effect: dropshadow(gaussian, lightgrey, 10, 0, -1, 1); 
-    /* -fx-font: 14 "Bahnschrift"; */
 }
 .button:hover {
     -fx-background-color: linear-gradient(to top, rgb(130, 179, 180), #a2b8b8)
 }
 
+.toggle-button:selected {
+    -fx-background-color: linear-gradient(to top, rgb(144, 198, 199), rgb(132, 172, 172))
+}
+
 .navButton {
     -fx-background-color: linear-gradient(to top, cadetblue, #7cb6b8b1);
-    -fx-font: bold 16 "Bahnschrift";
+    -fx-font: bold 16 "System";
     -fx-border-radius: 3;
-    /* -fx-border-color: rgb(56, 92, 93); */
     -fx-border-color: transparent;
 }
 .navButton:hover {
@@ -86,16 +84,16 @@
     -fx-border-color: transparent;
     -fx-effect: dropshadow(gaussian, rgb(230, 230, 230), 10, 0, -1, 1); 
 }
-.table-row-cell, table-row-cell:focused {
+/* .table-row-cell, table-row-cell:focused {
     -fx-text-fill: black;
-}
-.table-row-cell:selected {
-    -fx-background-color: rgb(245, 235, 145);
+} */
+.table-row-cell:filled:selected {
+    -fx-background-color: lightgray;
     -fx-text-fill: black;
 }
 
 .tree-cell:selected {
-    -fx-background-color: rgb(245, 235, 145);
+    -fx-background-color: lightgray;
     -fx-text-fill: black;
 }
 /* .tree-disclosure-node:closed > .arrow, .tree-disclosure-node:expanded > .arrow {

@@ -17,6 +17,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
@@ -124,11 +125,19 @@ public class SettingsController implements Initializable {
         // bind to setting property
         // or use a listener to call settingsMan.setBoolSetting when changed ?
         b1.selectedProperty().bindBidirectional(setting);
-        b2.setSelected(!setting.get());
+        b2.selectedProperty().bind(setting.not());
+        // b2.setSelected(!setting.get());
         // add to gridpane 
         grid.add(b1, 1, row);
         grid.add(b2, 2, row);
         grid.setHalignment(b1, HPos.RIGHT);
+
+        
+        // disable dark mode buttons bc i havent done the css yet lol
+        if (setting.getName() == "appearanceMode") {
+            b1.setDisable(true);
+            b2.setDisable(true);
+        }
     }
 
     public void openFiles(ActionEvent e) {
@@ -206,15 +215,6 @@ public class SettingsController implements Initializable {
         experimentTree.setRoot(rootItem);
         // set button actions 
     }
-
-    // set onAction methods for edit and delete buttons 
-    // private void setupButtonActions(TreeItem<TreeDisplayable> rootItem) {
-    //     for (TreeItem<TreeDisplayable> item : rootItem.getChildren()) {
-    //         CustomItemHBox hbox = (CustomItemHBox) item.getGraphic();
-    //         hbox.getEditButton().setOnAction(event -> editExperiment(hbox.getExperimentItem()));
-    //         hbox.getDeleteButton().setOnAction(event -> deleteExperiment(hbox.getExperimentItem()));
-    //     }
-    // }
 
     // edit button action in experiment treeview
     public void editExperiment(ExperimentItem exp) {

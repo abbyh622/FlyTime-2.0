@@ -18,6 +18,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -60,7 +61,8 @@ public class Controller2 implements Initializable {
 
         // show experiment name and behavior key bindings
         Label experimentLabel = new Label(App.selectedExperiment.getName());  
-        experimentLabel.setFont(Font.font("System", FontWeight.BOLD, 16.0));
+        experimentLabel.setFont(Font.font("System", FontWeight.BOLD, 18.0));
+        experimentLabel.setTextFill(Color.CADETBLUE);
         experimentHbox.getChildren().add(experimentLabel);
 
         // populate tableview with behavior names and keys

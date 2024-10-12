@@ -115,6 +115,11 @@ public class ExperimentDialog extends Dialog<Experiment> {
         addButton.setOnAction(e -> {
             if (behaviors.size() < 9) {
                 behaviors.add(new KeyBehaviorPair());
+                // expand pane window if needed
+                pane.getScene().getWindow().sizeToScene();
+            }
+            else {
+                Util.showError(pane.getScene().getWindow(), "Experiment already has maximum behaviors");
             }
         });
 
@@ -146,8 +151,8 @@ public class ExperimentDialog extends Dialog<Experiment> {
         mainLayout.getChildren().clear();
 
         if (behaviors.size() >= 1) {
-            HBox headerBox = new HBox(100);
-            headerBox.setPadding(new Insets(10, 20, 10, 20));
+            HBox headerBox = new HBox(85);
+            headerBox.setPadding(new Insets(10, 0, 0, 30));
             headerBox.getChildren().addAll(new Label("Key"), new Label("Behavior description"));
             mainLayout.getChildren().add(headerBox);
         }
@@ -174,6 +179,7 @@ public class ExperimentDialog extends Dialog<Experiment> {
             });
     
             hbox.getChildren().addAll(keyField, descField, deleteButton);
+            hbox.setAlignment(Pos.CENTER);
             mainLayout.getChildren().add(hbox);
         }
     }
