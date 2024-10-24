@@ -23,7 +23,7 @@
                   <Insets bottom="20.0" top="40.0" />
                </padding>
             </Label>
-            <HBox alignment="CENTER" fillHeight="false" maxWidth="1200.0" prefHeight="378.0" prefWidth="800.0" spacing="30.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER" maxWidth="1200.0" prefHeight="378.0" prefWidth="800.0" spacing="30.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="292.0" prefWidth="348.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
@@ -141,7 +141,7 @@
       <ToolBar prefHeight="30.0" prefWidth="800.0" styleClass="menuBar" BorderPane.alignment="CENTER">
         <items>
           <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#settingsScreen" styleClass="menuButton" text="Settings" />
-            <Button mnemonicParsing="false" styleClass="menuButton" text="Help" />
+            <Button fx:id="helpButton" mnemonicParsing="false" onAction="#helpScreen" styleClass="menuButton" text="Help" />
         </items>
       </ToolBar>
    </top>

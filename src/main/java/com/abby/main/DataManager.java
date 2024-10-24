@@ -32,13 +32,6 @@ public class DataManager {
     //
     private int[] columnWidths;
 
-    // setting to convert scores to X/blank instead of true/false 
-    // TEMPORARY this is just here for testing will be moved 
-    // private boolean convertSessionScores = false;
-    // public void setScoreDisplay(boolean b) {
-    //     convertSessionScores = b;
-    // }
-
     public DataManager() {
         exp = App.selectedExperiment;
         keyBindings = new ArrayList<KeyBehaviorPair>(exp.getBehaviorPairs());
@@ -165,7 +158,7 @@ public class DataManager {
 
     // write out the data from the current session to a new txt file
     // table-like display
-    public void writeSessionFile() {
+    public String writeSessionFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {
             // create file headers with session info
             // first row
@@ -215,17 +208,13 @@ public class DataManager {
                 }
                 writer.newLine();
             }
-            System.out.println("session file made in " + outputPath);
+            return "Session file exported: " + outputPath;
         } 
         catch (IOException e) {
             e.printStackTrace();
         }
+        return "Session file export failed";
     }
-
-    // write out the data from the current session to a new tab delimited txt file
-    // public void writeSessionTab() {
-
-    // }
 
     // make row of totaled/simplified scores for an arena
     // for adding to an existing file
@@ -251,7 +240,7 @@ public class DataManager {
     }
 
     // write out shortened data as new rows in an existing file
-    public void appendCumulativeFile(File file) {
+    public String appendCumulativeFile(File file) {
         // each row - video name, arena #, arena description, interval length, # intervals, # w/ behavior 1, # with behavior 2, etc
         ArrayList<List<String>> rows = new ArrayList<List<String>>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {        // handle filenotfoundexception
@@ -279,15 +268,16 @@ public class DataManager {
                 }
                 writer.newLine();
             }
-            System.out.println("cumulative file updated in " + outputPath);
+            return "Cumulative file updated: " + outputPath;
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+        return "Cumulative file update failed";
     }
 
     // create a cumulative file for the current experiment type
-    public void createCumulativeFile() {
+    public String createCumulativeFile() {
         List<String> columns = new ArrayList<String>(Arrays.asList("Video name", "Arena number", "Arena description", "Interval length (sec)", "Total intervals"));
         for (KeyBehaviorPair p : keyBindings) {
             columns.add(p.getBehavior());
@@ -312,11 +302,12 @@ public class DataManager {
                 }
                 writer.newLine();
             }
-            System.out.println("cumulative file made in " + outputPath);
+            return "Cumulative file created: " + outputPath;
         } 
         catch (IOException e) {
             e.printStackTrace();
         }
+        return "Cumulative file creation failed";
     }
 
 

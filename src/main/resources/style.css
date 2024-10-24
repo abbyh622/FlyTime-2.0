@@ -17,6 +17,22 @@
     -fx-opacity: 0.75;
 }
 
+#dataTextArea {
+    -fx-font: 16 'Monospaced';
+
+}
+
+/* .scroll-pane {
+    -fx-border-radius: 3;
+    -fx-border-width: 3;
+    -fx-border-color: blue;
+}
+.tree-view, .table-view {
+    -fx-border-radius: 3;
+    -fx-border-width: 3;
+    -fx-border-color: red;
+} */
+
 .button:focused, .table-view:focused, .tree-view:focused, .tree-cell:focused, .tree-table-cell:focused, .tree-item:focused, .text-field:focused {
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
@@ -59,14 +75,7 @@
 
 .menuBar {
     -fx-background-color: linear-gradient(to top, cadetblue, #5f9ea0b1);
-    /* -fx-border-color: rgb(56, 92, 93); */
     -fx-border-color: transparent;
-}
-
-.tree-view {
-    -fx-border-radius: 3;
-    -fx-border-color: rgb(230, 230, 230);
-    -fx-effect: dropshadow(gaussian, rgb(230, 230, 230), 10, 0, -1, 1); 
 }
 
 .text-field {
@@ -79,19 +88,30 @@
     -fx-background-color: linear-gradient(to top, rgb(158, 218, 221), #c3e1e1);
 }
 
-.table-view {
+.scroll-pane {
+    -fx-background-radius: 3;
     -fx-border-radius: 3;
-    -fx-border-color: transparent;
+    -fx-border-color: rgb(230, 230, 230);
     -fx-effect: dropshadow(gaussian, rgb(230, 230, 230), 10, 0, -1, 1); 
 }
-/* .table-row-cell, table-row-cell:focused {
-    -fx-text-fill: black;
-} */
+
+.table-view {
+    -fx-background-radius: 3; 
+    -fx-border-radius: 3;
+    -fx-border-color: transparent;
+    /* -fx-effect: dropshadow(gaussian, rgb(230, 230, 230), 10, 0, -1, 1);   */
+}
 .table-row-cell:filled:selected {
     -fx-background-color: lightgray;
     -fx-text-fill: black;
 }
 
+.tree-view {
+    -fx-background-radius: 3;
+    -fx-border-radius: 3;
+    -fx-border-color: transparent;
+    /* -fx-effect: dropshadow(gaussian, rgb(230, 230, 230), 10, 0, -1, 1);  */
+}
 .tree-cell:selected {
     -fx-background-color: lightgray;
     -fx-text-fill: black;
@@ -114,3 +134,35 @@
 .recordingVolumeSlider {
     -fx-opacity: 0.75;
 }
+
+.titled-pane {    
+    -fx-text-fill: rgb(78, 129, 130); 
+    -fx-background-color: white;
+    -fx-border-radius: 3;
+}
+.titled-pane > .title {
+    -fx-font: bold 20 "System";
+    -fx-text-fill: rgb(78, 129, 130);
+    -fx-background-color: white;
+}
+.titledPaneAnchorPane {
+    -fx-background-color: white;
+}
+#titledPaneVbox {
+    -fx-background-color: white;
+}
+.instructionsText {
+    -fx-font: 14 "System";
+}
+/* because the titledpane situation wasnt working for what i wanted */
+#instructionsAboutLabel {
+    -fx-font: bold 20 "System";
+    -fx-text-fill: rgb(78, 129, 130);
+}
+
+/* fixing layout
+.vbox {
+    -fx-border-width: 3;
+    -fx-border-color: pink;
+} */
+

@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.Parent;
 
 import com.abby.persistence.ExperimentManager;
@@ -26,6 +27,8 @@ public class App extends Application {
     public static String selectedVideo;                     // URI of the video to use
     public static Integer seconds;                          // number of seconds to observe each arena in a cycle
 
+    public static String winTitle = "Flytime (I still don't have an actual name) - [beta version or whatever]";
+    public static String winIcon = "/fruit-fly.png";
     public static String stylesheet;
     private String initialScene = "/screen1.fxml"; 
 
@@ -38,7 +41,8 @@ public class App extends Application {
             stylesheet = "/style.css";
         }
         Parent root = FXMLLoader.load(getClass().getResource(initialScene));
-        primaryStage.setTitle("flytime :)");
+        primaryStage.setTitle(winTitle);
+        primaryStage.getIcons().add(new Image(winIcon));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(stylesheet);
         primaryStage.setScene(scene);

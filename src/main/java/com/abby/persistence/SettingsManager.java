@@ -126,7 +126,7 @@ public class SettingsManager {
     // set all settings to default values
     public void restoreDefaults() {
         boolSettings.clear();
-        SimpleBooleanProperty dataVisual = new SimpleBooleanProperty(boolSettings, "dataVisual", false);
+        SimpleBooleanProperty dataVisual = new SimpleBooleanProperty(boolSettings, "dataVisual", true);
         boolSettings.put(dataVisual.getName(), dataVisual);
         SimpleBooleanProperty dataAutoExport = new SimpleBooleanProperty(boolSettings, "dataAutoExport", true);
         boolSettings.put(dataAutoExport.getName(), dataAutoExport);

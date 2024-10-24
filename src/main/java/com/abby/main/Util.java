@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.ArrayList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DialogPane;
+import javafx.scene.control.Tooltip;
 import javafx.stage.Window;
 
 
@@ -36,6 +37,11 @@ public class Util {
             return true;
         }
         return false;
+    }
+
+    // tooltip for indicating unfinished features that are visible in the ui
+    public static Tooltip getTooltip() {
+        return new Tooltip("Coming soon");
     }
 
     // get directory where app data is stored (settings.json, experiments.json)

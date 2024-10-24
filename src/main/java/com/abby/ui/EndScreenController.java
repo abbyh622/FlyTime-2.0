@@ -10,7 +10,9 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -23,6 +25,8 @@ public class EndScreenController implements Initializable {
 
     @FXML
     private TextArea dataTextArea;
+    @FXML
+    private VBox outputVbox;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -30,7 +34,7 @@ public class EndScreenController implements Initializable {
         dm = new DataManager();
 
         // set text area to monospaced font so spacing works right
-        dataTextArea.setStyle("-fx-font-family : 'Monospaced'");
+        // dataTextArea.setStyle("-fx-font-family : 'Monospaced'");
 
         // display data on screen
         String dataDisplay = dm.getSessionTableString();
@@ -42,7 +46,10 @@ public class EndScreenController implements Initializable {
         // String fileName = dm.getVideoName().split(".")[0] + ".txt"; 
         String fileName = dm.getVideoName() + ".txt"; 
         dm.setOutputPath(App.settingsMan.outputDirectory.get() + "\\" + fileName);
-        dm.writeSessionFile();
+        // show message in side panel
+        Label msg = new Label(dm.writeSessionFile());
+        msg.setWrapText(true);
+        outputVbox.getChildren().add(msg);
     }
 
     public void newCumFile() {
@@ -50,14 +57,20 @@ public class EndScreenController implements Initializable {
         // does not set the new file to be used as the experiment's cumulative file in settings, must be set manually
         String fileName = App.selectedExperiment.getName() + "_cumulative.txt";
         dm.setOutputPath(App.settingsMan.outputDirectory.get() + "\\" + fileName);
-        dm.createCumulativeFile();
+        // show message in side panel
+        Label msg = new Label(dm.createCumulativeFile());
+        msg.setWrapText(true);
+        outputVbox.getChildren().add(msg);
     }
 
     public void appendCumFile() { 
         FileChooser fc = new FileChooser();
         Stage fcStage = new Stage();
         File file = fc.showOpenDialog(fcStage);
-        dm.appendCumulativeFile(file);
+        // show message in side panel
+        Label msg = new Label(dm.appendCumulativeFile(file));
+        msg.setWrapText(true);
+        outputVbox.getChildren().add(msg);
     }
 
     // thoughts: idk if its that useful to have cumulative files set for each experiment, would it be better to just use filechooser each time to select which file to append
@@ -72,5 +85,9 @@ public class EndScreenController implements Initializable {
     // maybe put a confirmation dialog in this method like "exit to home screen?"
     public void done(ActionEvent e) throws Exception {
         App.ctrl.switchScene(e, App.ctrl.scene1);
+    }
+
+    public void helpScreen(ActionEvent e) throws Exception {
+        App.ctrl.switchScene(e, App.ctrl.instructionsScene);
     }
 }

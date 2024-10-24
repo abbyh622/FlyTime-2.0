@@ -20,10 +20,6 @@ import com.abby.exceptions.MaxBehaviorsExceededException;
 // class to manage experiment configurations
 // experiment info is stored in a json file, this class has methods to load the experiments and write new experiments to the file (also delete experiments)
 
-// problem - if an experiment is added/changed and not saved then another is added/changed later and saved (in same session), the previous experiment will be saved also because its in the main list
-// also unnecessary then to save after each experiment in the edit/config page because if ur editing/adding multiple then they can just all be saved at the end
-// need to rework this part 
-
 public class ExperimentManager {
     private String experimentFile = App.dataDirectory + "\\experiments.json";
     // this is the list of experiments available during runtime

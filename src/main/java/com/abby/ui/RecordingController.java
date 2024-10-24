@@ -27,6 +27,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Slider;
@@ -46,7 +48,7 @@ import com.abby.main.App;
 import com.abby.main.Arena;
 import com.abby.main.Interval;
 import com.abby.main.KeyBehaviorPair;
-
+import com.abby.main.Util;
 
 
 // change cycleArenas to loop based on video time
@@ -182,6 +184,7 @@ public class RecordingController implements Initializable {
 
         // set restart and help button icons
         restartButton.setGraphic(new FontIcon(FontAwesome.UNDO));
+        restartButton.setTooltip(Util.getTooltip());
         recordingHelp.setGraphic(new FontIcon(FontAwesome.QUESTION));
 
         // whenReady sets the slider and labels to show time/duration
@@ -320,7 +323,8 @@ public class RecordingController implements Initializable {
     }
 
     public void showRecordingInstructions() {
-
+        Dialog dialog = new HelpDialog();
+        dialog.showAndWait();
     }
 
     // to convert the Durations from media player time properties to normal readable format

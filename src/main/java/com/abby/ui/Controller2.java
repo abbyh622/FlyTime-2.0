@@ -154,4 +154,8 @@ public class Controller2 implements Initializable {
     public void settingsScreen(ActionEvent e) throws Exception {
         App.ctrl.switchScene(e, App.ctrl.settingsScene);
     }
+    
+    public void helpScreen(ActionEvent e) throws Exception {
+        App.ctrl.switchScene(e, App.ctrl.instructionsScene);
+    }
 }

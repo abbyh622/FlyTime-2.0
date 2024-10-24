@@ -216,4 +216,8 @@ public class Controller1 implements Initializable {
     public void settingsScreen(ActionEvent e) throws Exception {
         App.ctrl.switchScene(e, App.ctrl.settingsScene);
     }
+
+    public void helpScreen(ActionEvent e) throws Exception {
+        App.ctrl.switchScene(e, App.ctrl.instructionsScene);
+    }
 }

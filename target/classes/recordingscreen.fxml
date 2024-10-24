@@ -50,8 +50,8 @@
                </font>
             </Button>
             <Slider fx:id="timeSlider" layoutX="26.0" layoutY="457.0" prefHeight="14.0" prefWidth="850.0" styleClass="recordingTimeSlider" />
-            <Label fx:id="currentTimeLabel" layoutX="26.0" layoutY="478.0" prefHeight="17.0" prefWidth="53.0" styleClass="timeLabel" />
-            <Label fx:id="totalDurationLabel" alignment="CENTER_RIGHT" layoutX="812.0" layoutY="478.0" prefHeight="13.0" prefWidth="64.0" styleClass="timeLabel" />
+            <Label fx:id="currentTimeLabel" layoutX="26.0" layoutY="478.0" styleClass="timeLabel" />
+            <Label fx:id="totalDurationLabel" alignment="CENTER_RIGHT" layoutX="812.0" layoutY="478.0" styleClass="timeLabel" />
             <HBox fx:id="volumeHbox" alignment="CENTER" layoutX="85.0" layoutY="471.0" prefHeight="32.0" prefWidth="174.0">
                <children>
                   <Button fx:id="volumeButton" minWidth="28.0" mnemonicParsing="false" onAction="#toggleMute" prefWidth="28.0" styleClass="recordingVolumeButton" />
@@ -66,7 +66,7 @@
       </Pane>
    </center>
    <top>
-      <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefWidth="900.0" styleClass="menuBar" BorderPane.alignment="CENTER">
+      <ToolBar nodeOrientation="RIGHT_TO_LEFT" opacity="0.75" prefWidth="900.0" styleClass="menuBar" BorderPane.alignment="CENTER">
          <items>
             <Button fx:id="restartButton" mnemonicParsing="false" onAction="#restart" styleClass="menuButton" />
             <Button fx:id="recordingHelp" mnemonicParsing="false" onAction="#showRecordingInstructions" styleClass="menuButton" />

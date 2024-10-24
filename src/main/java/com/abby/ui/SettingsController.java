@@ -19,6 +19,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -125,8 +126,8 @@ public class SettingsController implements Initializable {
         // bind to setting property
         // or use a listener to call settingsMan.setBoolSetting when changed ?
         b1.selectedProperty().bindBidirectional(setting);
-        b2.selectedProperty().bind(setting.not());
-        // b2.setSelected(!setting.get());
+        // b2.selectedProperty().bind(setting.not());
+        b2.setSelected(!setting.get());
         // add to gridpane 
         grid.add(b1, 1, row);
         grid.add(b2, 2, row);
@@ -134,9 +135,11 @@ public class SettingsController implements Initializable {
 
         
         // disable dark mode buttons bc i havent done the css yet lol
-        if (setting.getName() == "appearanceMode") {
+        if (setting.getName().equals("appearanceMode")) {
             b1.setDisable(true);
             b2.setDisable(true);
+            b1.setTooltip(Util.getTooltip());
+            b2.setTooltip(Util.getTooltip());
         }
     }
 
@@ -268,5 +271,9 @@ public class SettingsController implements Initializable {
     public void back(ActionEvent e) throws Exception {
         App.settingsMan.saveSettings();       // save settings when exiting
         App.ctrl.switchScene(e, App.ctrl.prevScene);
+    }
+    
+    public void helpScreen(ActionEvent e) throws Exception {
+        App.ctrl.switchScene(e, App.ctrl.instructionsScene);
     }
 }

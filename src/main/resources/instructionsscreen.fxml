@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.abby.ui.InstructionsController">
+   <center>
+
+   </center>
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <items>
+            <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#settingsScreen" styleClass="menuButton" text="Settings" />
+            <Button disable="true" mnemonicParsing="false" styleClass="menuButton" text="Help" />
+        </items>
+      </ToolBar>
+   </top>
+   <center>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <VBox maxWidth="900.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="1000.0" prefViewportHeight="449.0" prefViewportWidth="700.0" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS">
+                     <content>
+                        <VBox id="titledPaneVbox">
+                           <children>
+                              <VBox fx:id="aboutVbox">
+                                 <children>
+                                    <Label id="instructionsAboutLabel" text="About">
+                                       <VBox.margin>
+                                          <Insets left="6.0" top="6.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="8.0" />
+                                 </padding>
+                              </VBox>
+                              <Accordion prefWidth="698.0">
+                                 <panes>
+                                    <TitledPane expanded="false" text="Experiments">
+                                       <content>
+                                          <AnchorPane styleClass="titledPaneAnchorPane">
+                                             <children>
+                                                <VBox fx:id="experimentsVbox" VBox.vgrow="SOMETIMES" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane expanded="false" text="Arenas">
+                                       <content>
+                                          <AnchorPane styleClass="titledPaneAnchorPane">
+                                             <children>
+                                                <VBox fx:id="arenasVbox" VBox.vgrow="SOMETIMES" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane expanded="false" text="Scoring">
+                                       <content>
+                                          <AnchorPane styleClass="titledPaneAnchorPane">
+                                             <children>
+                                                <VBox fx:id="scoringVbox" VBox.vgrow="SOMETIMES" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" text="Output">
+                                       <content>
+                                          <AnchorPane styleClass="titledPaneAnchorPane">
+                                             <children>
+                                                <VBox fx:id="outputVbox" VBox.vgrow="SOMETIMES" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
+                           </children>
+                        </VBox>
+                     </content>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </ScrollPane>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="50.0" right="50.0" top="20.0" />
+               </VBox.margin>
+            </VBox>
+            <HBox>
+               <padding>
+                  <Insets bottom="40.0" left="50.0" right="50.0" top="10.0" />
+               </padding>
+               <children>
+                  <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="146.0" styleClass="navButton" text="Back">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

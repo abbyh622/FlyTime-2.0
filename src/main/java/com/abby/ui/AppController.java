@@ -17,7 +17,10 @@ public class AppController {
     public static String scene2 = "/screen2.fxml";
     public static String recordingScene = "/recordingscreen.fxml";
     public static String endScene = "/endscreen.fxml";
-    public static String settingsScene = "/settingsscreenalt.fxml";
+    public static String settingsScene = "/settingsscreen.fxml";
+    public static String instructionsScene = "/instructionsscreen.fxml";
+    public static String light = "/style.css";
+    public static String dark = "/darkstyle.css";
     public String prevScene;           // previous scene visited, updated each scene change except recording (for returning from settings scene)
     private String stylesheet;
     private double curWidth;           // current window dimensions, to preserve size when switching scenes
@@ -35,10 +38,10 @@ public class AppController {
         // appearancemode true = dark mode on
         // here so switching modes will appear next scene change
         if (App.settingsMan.boolSettings.get("appearanceMode").get()) {
-            stylesheet = "/darkstyle.css";
+            stylesheet = dark;
         }
         else {
-            stylesheet = "/style.css";
+            stylesheet = light;
         }
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
