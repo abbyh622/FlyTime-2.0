@@ -135,6 +135,9 @@
     -fx-opacity: 0.75;
 }
 
+.scroll-pane > .viewport {
+    -fx-background-color: white;
+}
 .titled-pane {    
     -fx-text-fill: rgb(78, 129, 130); 
     -fx-background-color: white;
@@ -145,10 +148,7 @@
     -fx-text-fill: rgb(78, 129, 130);
     -fx-background-color: white;
 }
-.titledPaneAnchorPane {
-    -fx-background-color: white;
-}
-#titledPaneVbox {
+.titledPaneVbox {
     -fx-background-color: white;
 }
 .instructionsText {

@@ -30,11 +30,11 @@
          <children>
             <VBox maxWidth="900.0" VBox.vgrow="ALWAYS">
                <children>
-                  <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="1000.0" prefViewportHeight="449.0" prefViewportWidth="700.0" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS">
+                  <ScrollPane fitToHeight="false" fitToWidth="true" hbarPolicy="NEVER" maxWidth="900.0" prefViewportHeight="449.0" prefViewportWidth="700.0" vbarPolicy="AS_NEEDED" VBox.vgrow="ALWAYS">
                      <content>
-                        <VBox id="titledPaneVbox">
+                        <VBox VBox.vgrow="ALWAYS">
                            <children>
-                              <VBox fx:id="aboutVbox">
+                              <VBox fx:id="aboutVbox" styleClass="titledPaneVbox">
                                  <children>
                                     <Label id="instructionsAboutLabel" text="About">
                                        <VBox.margin>
@@ -50,38 +50,22 @@
                                  <panes>
                                     <TitledPane expanded="false" text="Experiments">
                                        <content>
-                                          <AnchorPane styleClass="titledPaneAnchorPane">
-                                             <children>
-                                                <VBox fx:id="experimentsVbox" VBox.vgrow="SOMETIMES" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                             </children>
-                                          </AnchorPane>
+                                            <VBox fx:id="experimentsVbox" styleClass="titledPaneVbox" VBox.vgrow="SOMETIMES" />
                                        </content>
                                     </TitledPane>
                                     <TitledPane expanded="false" text="Arenas">
                                        <content>
-                                          <AnchorPane styleClass="titledPaneAnchorPane">
-                                             <children>
-                                                <VBox fx:id="arenasVbox" VBox.vgrow="SOMETIMES" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                             </children>
-                                          </AnchorPane>
+                                            <VBox fx:id="arenasVbox" styleClass="titledPaneVbox" VBox.vgrow="SOMETIMES" />
                                        </content>
                                     </TitledPane>
                                     <TitledPane expanded="false" text="Scoring">
                                        <content>
-                                          <AnchorPane styleClass="titledPaneAnchorPane">
-                                             <children>
-                                                <VBox fx:id="scoringVbox" VBox.vgrow="SOMETIMES" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                             </children>
-                                          </AnchorPane>
+                                            <VBox fx:id="scoringVbox" styleClass="titledPaneVbox" VBox.vgrow="SOMETIMES" />
                                        </content>
                                     </TitledPane>
                                     <TitledPane animated="false" text="Output">
                                        <content>
-                                          <AnchorPane styleClass="titledPaneAnchorPane">
-                                             <children>
-                                                <VBox fx:id="outputVbox" VBox.vgrow="SOMETIMES" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                             </children>
-                                          </AnchorPane>
+                                            <VBox fx:id="outputVbox" styleClass="titledPaneVbox" VBox.vgrow="SOMETIMES" />
                                        </content>
                                     </TitledPane>
                                  </panes>
