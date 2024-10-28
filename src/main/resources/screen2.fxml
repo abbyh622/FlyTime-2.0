@@ -23,7 +23,7 @@
                   <Insets bottom="20.0" top="40.0" />
                </padding>
             </Label>
-            <HBox alignment="CENTER" maxWidth="1200.0" prefHeight="378.0" prefWidth="800.0" spacing="30.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER" maxWidth="1200.0" prefHeight="378.0" prefWidth="800.0" spacing="30.0">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="292.0" prefWidth="348.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
@@ -36,9 +36,9 @@
                               </Label>
                            </children>
                         </HBox>
-                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="450.0" minHeight="150.0" minViewportHeight="150.0" minViewportWidth="250.0" minWidth="250.0" prefHeight="200.0" prefWidth="340.0">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxWidth="400.0" minHeight="150.0" minViewportHeight="150.0" minViewportWidth="250.0" minWidth="250.0" prefHeight="200.0" prefWidth="340.0">
                            <content>
-                              <TableView fx:id="arenaTable" maxHeight="400.0" maxWidth="450.0" minHeight="150.0" minWidth="250.0">
+                              <TableView fx:id="arenaTable" maxHeight="400.0" maxWidth="400.0" minHeight="150.0" minWidth="250.0">
                                  <contextMenu>
                                     <ContextMenu fx:id="arenaTableMenu">
                                        <items>
@@ -53,7 +53,7 @@
                               </TableView>
                            </content>
                         </ScrollPane>
-                        <HBox alignment="BOTTOM_RIGHT" maxWidth="450.0" VBox.vgrow="ALWAYS">
+                        <HBox alignment="BOTTOM_RIGHT" maxWidth="400.0" prefWidth="339.0">
                            <children>
                               <Button alignment="CENTER" mnemonicParsing="false" onAction="#showAddDialog" prefHeight="30.0" text="Add Arena">
                                  <font>
@@ -82,7 +82,7 @@
                            <children>
                               <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="400.0" maxWidth="350.0" minHeight="150.0" minViewportHeight="150.0" minViewportWidth="150.0" minWidth="150.0" prefHeight="200.0" prefWidth="260.0">
                                  <content>
-                                    <TableView fx:id="behaviorTable" maxHeight="400.0" minWidth="150.0" />
+                                    <TableView fx:id="behaviorTable" maxHeight="400.0" maxWidth="350.0" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -106,7 +106,7 @@
             </HBox>
             <VBox alignment="CENTER">
                <children>
-                  <HBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
+                  <HBox alignment="BOTTOM_CENTER" VBox.vgrow="NEVER">
                      <children>
                         <HBox>
                            <children>

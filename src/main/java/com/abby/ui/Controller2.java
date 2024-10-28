@@ -42,7 +42,6 @@ public class Controller2 implements Initializable {
     @FXML
     private Spinner<Integer> secondSpinner;
     private Integer sec;
-    // should keybehaviorpairs list be in app instead
     private ObservableList<KeyBehaviorPair> keyBindings = FXCollections.observableArrayList(App.selectedExperiment.getBehaviorPairs());
 
     @Override

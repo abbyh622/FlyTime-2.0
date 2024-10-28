@@ -6,7 +6,6 @@ import org.json.simple.parser.*;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import com.abby.main.Experiment;
 import com.abby.main.KeyBehaviorPair;
 import com.abby.main.App;
-import com.abby.main.CoolContainerFactory;
 import com.abby.exceptions.MaxBehaviorsExceededException;
 
 // class to manage experiment configurations
@@ -54,11 +52,6 @@ public class ExperimentManager {
                         for (Map.Entry<String, String> b : behaviors.entrySet()) {
                             behaviorsConverted.add(new KeyBehaviorPair(b.getKey().charAt(0), b.getValue()));
                         }
-                        // Map<String, String> behaviorStrings = (Map<String, String>) exp.get("behaviors");
-                        // Map<Character, String> behaviorConverted = new HashMap<Character, String>();
-                        // for (Map.Entry<String, String> item : behaviorStrings.entrySet()) {
-                        //     behaviorConverted.put((item.getKey().charAt(0)), item.getValue());
-                        // }
 
                         // make experiment and add to list
                         try {
@@ -91,6 +84,7 @@ public class ExperimentManager {
         try {
             FileWriter out = new FileWriter(experimentFile); 
             JSONArray expArray = new JSONArray();
+            // put experiments in json format
             for (Experiment e : experiments) {
                 JSONObject jsonExp = new JSONObject();
                 jsonExp.put("name", e.getName());
@@ -98,7 +92,7 @@ public class ExperimentManager {
                 JSONObject jsonBehaviors = new JSONObject();
                 for (KeyBehaviorPair p : e.getBehaviorPairs()) {
                     // JSONObject jsonBehavior = new JSONObject();
-                    jsonBehaviors.put(Character.toString(p.getKey()), p.getBehavior());   // can delete this line i think
+                    jsonBehaviors.put(Character.toString(p.getKey()), p.getBehavior());
                 } 
 
                 jsonExp.put("behaviors", jsonBehaviors);

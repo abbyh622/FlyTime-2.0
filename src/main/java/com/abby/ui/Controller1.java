@@ -50,6 +50,7 @@ public class Controller1 implements Initializable {
         App.ctrl.prevScene = AppController.scene1;
         populateExperiments();
         // create experiment tree context menu since you cant put in in the fxml file
+        // jk i decided were not doing that
         // ContextMenu treeMenu = new ContextMenu();
         // MenuItem edit = new MenuItem("Edit");
         // edit.setOnAction(event -> editExperiment());
@@ -157,8 +158,6 @@ public class Controller1 implements Initializable {
     }
 
     private void getPath(String path) {
-        // if (videoPathField.getText() != null && videoPathField.getText().length() > 0) {
-        //    String videoURI = validateVideo(videoPathField.getText());
         if (path != null && path.length() > 0) {
             String videoURI = validateVideo(path);
             if (videoURI != null) {

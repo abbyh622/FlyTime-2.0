@@ -34,7 +34,7 @@ public class Arena {
     public Interval addInterval(String time) {
         Interval newInterval = new Interval(time);
         intervals.add(newInterval);
-        System.out.println("interval created in arena " + this.num.get() + ", " + time);
+        // System.out.println("interval created in arena " + this.num.get() + ", " + time);
         return newInterval;
     }
 

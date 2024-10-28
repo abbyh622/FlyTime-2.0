@@ -17,7 +17,7 @@
          <children>
             <HBox prefHeight="478.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
                <children>
-                  <TextArea id="dataTextArea" fx:id="dataTextArea" editable="false" prefHeight="443.0" prefWidth="800.0">
+                  <TextArea id="dataTextArea" fx:id="dataTextArea" editable="false" prefHeight="443.0" prefWidth="800.0" HBox.hgrow="ALWAYS">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -32,7 +32,7 @@
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Button mnemonicParsing="false" onAction="#exportSession" text="export session file" textAlignment="CENTER" wrapText="true">
+                        <Button mnemonicParsing="false" onAction="#exportSession" prefWidth="168.0" text="export session file" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="13.0" />
                            </font>
@@ -40,7 +40,7 @@
                               <Insets />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#newCumFile" text="create cumulative file" textAlignment="CENTER" wrapText="true">
+                        <Button mnemonicParsing="false" onAction="#newCumFile" prefWidth="168.0" text="create cumulative file" textAlignment="CENTER" wrapText="true">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -48,7 +48,7 @@
                               <Font size="13.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#appendCumFile" text="append cumumulative file" textAlignment="CENTER" wrapText="true">
+                        <Button mnemonicParsing="false" onAction="#appendCumFile" prefWidth="168.0" text="append cumumulative file" textAlignment="CENTER" wrapText="true">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
@@ -58,16 +58,19 @@
                         </Button>
                         <ScrollPane fx:id="outputScrollpane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" VBox.vgrow="ALWAYS">
                            <content>
-                              <VBox fx:id="outputVbox" alignment="BOTTOM_LEFT" spacing="10.0">
+                              <VBox fx:id="outputVbox" alignment="BOTTOM_LEFT" prefWidth="138.0" spacing="10.0">
                                  <padding>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </padding>
                               </VBox>
                            </content>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
                         </ScrollPane>
                      </children>
                      <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                        <Insets left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </VBox>
                </children>

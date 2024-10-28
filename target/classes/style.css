@@ -63,6 +63,10 @@
     -fx-background-color: linear-gradient(to top, rgb(78, 129, 130), #4c8080b1);
 }
 
+#finishButton {
+    -fx-font: bold 20 "System";
+}
+
 .recordingVolumeButton {
     -fx-opacity: 0.75;
     -fx-font: 14 "Font Awesome 6 Free-Solid-900";

@@ -5,19 +5,15 @@ import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.stage.Window;
 
 import com.abby.main.App;
 import com.abby.main.Arena;
 import com.abby.main.Util;
-
-// disallow commas in description, will interfere with cumulative csv
 
 // number field restrictions not working
 

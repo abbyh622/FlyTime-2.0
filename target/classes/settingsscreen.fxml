@@ -37,7 +37,7 @@
             </Label>
             <HBox maxWidth="1200.0" prefHeight="132.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER_RIGHT" maxWidth="600.0" prefHeight="366.0" prefWidth="350.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER" maxWidth="600.0" prefHeight="366.0" prefWidth="350.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <padding>
                         <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                      </padding>
@@ -49,21 +49,22 @@
                         </Label>
                         <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER">
                            <content>
-                              <TreeView fx:id="experimentTree" maxHeight="500.0" maxWidth="350.0" minHeight="100.0" minWidth="150.0" prefHeight="272.0" prefWidth="250.0" showRoot="false">
+                              <!-- <TreeView fx:id="experimentTree" maxHeight="500.0" maxWidth="350.0" minHeight="100.0" minWidth="150.0" prefHeight="272.0" prefWidth="250.0" showRoot="false"> -->
+                              <TreeView fx:id="experimentTree" maxHeight="500.0" minHeight="100.0" minWidth="150.0" prefHeight="272.0" showRoot="false">
                                  <padding>
                                     <Insets top="5.0" />
                                  </padding>
                               </TreeView>
                            </content>
                         </ScrollPane>
-                        <Button fx:id="createExperimentButton" mnemonicParsing="false" onAction="#createExperiment" text="Create New">
-                           <VBox.margin>
-                              <Insets right="20.0" />
-                           </VBox.margin>
-                        </Button>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="314.0">
+                           <children>
+                              <Button fx:id="createExperimentButton" mnemonicParsing="false" onAction="#createExperiment" text="Create New" />
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER_LEFT" spacing="10.0">
+                  <VBox alignment="CENTER" spacing="10.0" HBox.hgrow="ALWAYS">
                      <padding>
                         <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
                      </padding>
@@ -186,7 +187,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="BOTTOM_LEFT" VBox.vgrow="ALWAYS">
+            <HBox alignment="BOTTOM_LEFT" VBox.vgrow="NEVER">
                <children>
                   <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="146.0" styleClass="navButton" text="Back">
                      <font>

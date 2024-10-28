@@ -25,7 +25,10 @@ public class HelpDialog extends Dialog<Object> {    // dont need to return anyth
 
         Label text = new Label(scoringInstructions);
         text.setWrapText(true);
+        text.setMaxWidth(400);
+        
         VBox content = new VBox(10);
         content.getChildren().add(text);
+        pane.setContent(content);
     }
 }

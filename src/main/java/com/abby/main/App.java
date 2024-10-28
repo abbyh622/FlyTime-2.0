@@ -48,8 +48,12 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        // fix - going back to scene1 the selected expmnt doesnt show, back to scene2 the seconds is reset
+    
+        // fix:
+        // add temp backup file situation in datamanager.appendcumfile()
+        // going back to scene1 the selected expmnt doesnt show, back to scene2 the seconds is reset
         // scene2 seconds spinner sometimes goes down when up button clicked
+        // make so behavior name cant be null in experimentdialog
         // fix nonexistent file/parse fail in experimentmanager and settingsmanager
         // check/fix resultConverter use in dialogs
         // settingscontroller - change bidirectional binding of settings to changelistener maybe?

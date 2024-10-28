@@ -16,14 +16,14 @@
    <center>
       <VBox alignment="CENTER" prefHeight="574.0" prefWidth="800.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="32.0" prefWidth="800.0" styleClass="title" text="Experiment Setup">
+            <Label alignment="CENTER" prefHeight="32.0" prefWidth="800.0" styleClass="title" text="Experiment Setup" VBox.vgrow="ALWAYS">
                <font>
                </font>
                <padding>
                   <Insets bottom="20.0" top="40.0" />
                </padding>
             </Label>
-            <HBox alignment="CENTER" maxWidth="1200.0" prefHeight="378.0" prefWidth="800.0" spacing="30.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER" maxWidth="1200.0" prefHeight="378.0" prefWidth="800.0" spacing="30.0">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="312.0" prefWidth="360.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
@@ -98,7 +98,7 @@
                   <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
                </padding>
             </HBox>
-            <HBox alignment="BOTTOM_RIGHT" VBox.vgrow="ALWAYS">
+            <HBox alignment="BOTTOM_RIGHT" VBox.vgrow="NEVER">
                <children>
                   <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#next" prefHeight="37.0" prefWidth="146.0" styleClass="navButton" text="Next">
                      <font>

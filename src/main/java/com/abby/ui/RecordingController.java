@@ -41,7 +41,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import com.abby.main.App;
@@ -170,7 +169,7 @@ public class RecordingController implements Initializable {
         volumeHbox.setOnMouseEntered(e -> volumeSlider.setVisible(true));
         // wait .5 sec then hide slider
         volumeHbox.setOnMouseExited(e2 -> {
-            PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
             pause.setOnFinished(e3 -> volumeSlider.setVisible(false));
             pause.play();
         });
@@ -323,6 +322,10 @@ public class RecordingController implements Initializable {
     }
 
     public void showRecordingInstructions() {
+        // pause loop
+        if (isPlaying) {
+            toggleLoop();
+        }
         Dialog dialog = new HelpDialog();
         dialog.showAndWait();
     }

@@ -43,9 +43,6 @@ public class ExperimentDialog extends Dialog<Experiment> {
     VBox mainLayout = new VBox(10);
     TextField nameField = new TextField();
     Button addButton = new Button("Add Behavior");
-    // i think this should just be deleted and just have things always saved
-    // CheckBox saveCheckBox = new CheckBox("Save experiment");
-    // put a context menu/hint on checkbox to explain 
 
     // constructor
     public ExperimentDialog(Experiment e) {
@@ -59,11 +56,6 @@ public class ExperimentDialog extends Dialog<Experiment> {
         }
         buildWindow();
     }
-    // constructor for restricted editing on screen 1
-    // can only edit behavior key bindings for simplicity
-    // public ExperimentDialog(Experiment e, boolean restricted) {
-
-    // }
 
     private void buildWindow() {
         DialogPane pane = getDialogPane();
@@ -79,13 +71,7 @@ public class ExperimentDialog extends Dialog<Experiment> {
         nameBox.getChildren().addAll(new Label("Name"), nameField);
 
         mainLayout.setAlignment(Pos.CENTER);
-        // mainLayout.getChildren().addAll(nameBox, addButton);
-
         container.getChildren().addAll(nameBox, mainLayout, addButton);
-        // HBox checkBoxContainer = new HBox(saveCheckBox);
-        // checkBoxContainer.setAlignment(Pos.CENTER_RIGHT);
-        // container.getChildren().add(checkBoxContainer);
-
         pane.setContent(container);
 
         if (!experiment.isEmpty()) {
@@ -132,12 +118,7 @@ public class ExperimentDialog extends Dialog<Experiment> {
             if (validateExperiment()) {
                 updateExperiment();
                 setResult(experiment);
-                // need to add to main experiment list for finding selection in controller1, will only run saveExperiments() when this dialog is closed and the checkbox is checked 
-                // experiments added/modified will only be available for the current session if box is not checked because they will be in the main experiment list but not written to the json file for storing experiments
-                // problem - if an experiment is added/changed and not saved then another is added/changed later and saved (in same session), the previous experiment will be saved also because its in the main list
-                // also unnecessary then to save after each experiment in the edit/config page because if ur editing/adding multiple then they can just all be saved at the end
-                // need to rework this part 
-                // add new experiment to list is creating, not if editing existing experiment
+                // add new experiment to list if creating, not if editing existing experiment
                 if (this.getTitle() == "New experiment type") {
                     App.experimentMan.experiments.add(experiment);
                 }
@@ -213,6 +194,10 @@ public class ExperimentDialog extends Dialog<Experiment> {
         // check that keys are unique and valid 
         Set<Character> keySet = new HashSet<Character>();
         for (KeyBehaviorPair p : behaviors) {
+            if (p.getKey() == null) {
+                Util.showError(getDialogPane().getScene().getWindow(), "All keys must be assigned");
+                return false;
+            }
             keySet.add(p.getKey());
             if (!Util.validateKeyChar(p.getKey())) {
                 Util.showError(getDialogPane().getScene().getWindow(), "Key " + p.getKey() + " is not allowed \nKey must be a letter or number (A-Z, 0-9)");
@@ -253,5 +238,4 @@ public class ExperimentDialog extends Dialog<Experiment> {
         });
         return keyFormatter;
     }
-
 }

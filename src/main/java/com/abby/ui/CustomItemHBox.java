@@ -45,21 +45,4 @@ public class CustomItemHBox extends HBox implements TreeDisplayable {
     public Button getDeleteButton() {
         return this.deleteButton;
     }
-
-
-
-    // delete these probably
-    // public CustomItemHBox(Label text) {
-    //     super(5);
-    //     this.text = text;
-    //     this.editButton = GlyphsDude.createIconButton(FontAwesomeIcon.EDIT);
-    //     this.deleteButton = GlyphsDude.createIconButton(FontAwesomeIcon.TRASH);
-    // }
-    // public CustomItemHBox(String text) {
-    //     super(5);
-    //     this.text = new Label(text);
-    //     this.editButton = GlyphsDude.createIconButton(FontAwesomeIcon.EDIT);
-    //     this.deleteButton = GlyphsDude.createIconButton(FontAwesomeIcon.TRASH);
-    // }
-
 }

@@ -17,9 +17,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
@@ -89,9 +87,6 @@ public class SettingsController implements Initializable {
         createToggleButtons(boolSettings.get("dataVisual"), dataVisualGroup, dataOutputGridpane, 0);
         ToggleGroup dataAutoExportGroup = new ToggleGroup();
         createToggleButtons(boolSettings.get("dataAutoExport"), dataAutoExportGroup, dataOutputGridpane, 1);
-        // this one is cancelled
-        // ToggleGroup dataAutoAppendGroup = new ToggleGroup();
-        // createToggleButtons(boolSettings.get("dataAutoAppend"), dataAutoAppendGroup, dataOutputGridpane, 2);
 
         // video section
         ToggleGroup videoMillisecGroup = new ToggleGroup();
@@ -113,6 +108,7 @@ public class SettingsController implements Initializable {
 
         // create on and off buttons
         // using radio buttons for functionality (not deselectable) but want them to look like regular buttons
+        // i dont really like this want to change it to a switch slider thing
         RadioButton b1 = new RadioButton("On");
         b1.getStyleClass().remove("radio-button");
         b1.getStyleClass().addAll("toggle-button", "button");
@@ -126,7 +122,6 @@ public class SettingsController implements Initializable {
         // bind to setting property
         // or use a listener to call settingsMan.setBoolSetting when changed ?
         b1.selectedProperty().bindBidirectional(setting);
-        // b2.selectedProperty().bind(setting.not());
         b2.setSelected(!setting.get());
         // add to gridpane 
         grid.add(b1, 1, row);
@@ -216,7 +211,6 @@ public class SettingsController implements Initializable {
         }
         // set root to display
         experimentTree.setRoot(rootItem);
-        // set button actions 
     }
 
     // edit button action in experiment treeview
@@ -252,21 +246,9 @@ public class SettingsController implements Initializable {
         if (result.isPresent()) {
             if (result.get() instanceof Experiment) {
                 populateExperiments();
-                // ExperimentItem newExpmnt = new ExperimentItem(result.get());
-                // // CustomItemHBox newExpmntHbox = new CustomItemHBox(newExpmnt);
-                // TreeItem<TreeDisplayable> newTreeExpmnt = new TreeItem<>(newExpmnt);
-                // for (KeyBehaviorPair p : newExpmnt.getBehaviors()) {
-                //     TreeItem<TreeDisplayable> behav = new TreeItem<>(new TreeString(p.getBehavior()));
-                //     newTreeExpmnt.getChildren().add(behav);
-                // }
-                // experimentTree.getRoot().getChildren().add(newTreeExpmnt);
             } 
         }
     }
-
-    // public void manageCumFiles(ActionEvent e) throws Exception {
-
-    // }
 
     public void back(ActionEvent e) throws Exception {
         App.settingsMan.saveSettings();       // save settings when exiting

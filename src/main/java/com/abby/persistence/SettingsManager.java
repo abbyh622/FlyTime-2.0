@@ -18,7 +18,6 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import com.abby.main.App;
-import com.abby.main.CoolContainerFactory;
 
 public class SettingsManager {
 
@@ -41,7 +40,6 @@ public class SettingsManager {
         boolSettings = new HashMap<String, SimpleBooleanProperty>();
         try {
             FileReader in = new FileReader(settingsFile);
-            // InputStreamReader in = new InputStreamReader(getClass().getResourceAsStream(settingsFile));
             JSONParser parse = new JSONParser();
             ContainerFactory containers = new CoolContainerFactory();
             try {
@@ -114,7 +112,7 @@ public class SettingsManager {
 
             settingsArray.writeJSONString(out);
             out.close();
-            System.out.println("settings saved");
+            // System.out.println("settings saved");
         }
         catch (IOException e) {
             System.out.println("file writer didnt work");
@@ -128,7 +126,7 @@ public class SettingsManager {
         boolSettings.clear();
         SimpleBooleanProperty dataVisual = new SimpleBooleanProperty(boolSettings, "dataVisual", true);
         boolSettings.put(dataVisual.getName(), dataVisual);
-        SimpleBooleanProperty dataAutoExport = new SimpleBooleanProperty(boolSettings, "dataAutoExport", true);
+        SimpleBooleanProperty dataAutoExport = new SimpleBooleanProperty(boolSettings, "dataAutoExport", false);
         boolSettings.put(dataAutoExport.getName(), dataAutoExport);
         // SimpleBooleanProperty dataAutoAppend = new SimpleBooleanProperty(boolSettings, "dataAutoAppend", false);
         // boolSettings.put(dataAutoAppend.getName(), dataAutoAppend);
@@ -141,15 +139,4 @@ public class SettingsManager {
         // set output directory to downloads folder
         outputDirectory = new SimpleStringProperty(null, "outputDirectory", System.getProperty("user.home") + "\\Downloads");
     }
-
-    // this is kind of unnecessary i think
-    // generic method to get boolean setting values
-    // public SimpleBooleanProperty getBoolSetting(String name) {
-    //     return boolSettings.get(name);
-    // }
-    // // generic method to set settings with boolean values
-    // public void setBoolSetting(String name, boolean newValue) {
-    //     boolSettings.replace(name, new SimpleBooleanProperty(boolSettings, name, newValue));
-    // }
-
 }
