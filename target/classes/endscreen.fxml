@@ -75,18 +75,6 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="TOP_RIGHT" prefHeight="88.0" prefWidth="800.0">
-               <children>
-                  <Button fx:id="doneBtn" mnemonicParsing="false" onAction="#done" prefHeight="37.0" prefWidth="146.0" styleClass="navButton" text="Done" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets bottom="40.0" left="50.0" right="50.0" top="10.0" />
-               </padding>
-            </HBox>
          </children>
       </VBox>
    </center>
@@ -98,4 +86,18 @@
          </items>
       </ToolBar>
    </top>
+   <bottom>
+      <HBox alignment="TOP_RIGHT" fillHeight="false" prefHeight="88.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="doneBtn" mnemonicParsing="false" onAction="#done" prefHeight="37.0" prefWidth="146.0" styleClass="navButton" text="Done" HBox.hgrow="ALWAYS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="40.0" left="50.0" right="50.0" top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
 </BorderPane>

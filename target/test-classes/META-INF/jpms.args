@@ -1,0 +1,4 @@
+--patch-module
+com.abby=_
+--add-reads
+com.abby=ALL-UNNAMED

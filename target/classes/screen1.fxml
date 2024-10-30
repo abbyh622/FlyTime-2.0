@@ -98,17 +98,6 @@
                   <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
                </padding>
             </HBox>
-            <HBox alignment="BOTTOM_RIGHT" maxHeight="88.0" prefHeight="88.0" VBox.vgrow="NEVER">
-               <children>
-                  <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#next" prefHeight="37.0" prefWidth="146.0" styleClass="navButton" text="Next">
-                     <font>
-                        <Font size="16.0" />
-                     </font></Button>
-               </children>
-               <padding>
-                  <Insets bottom="40.0" left="50.0" right="50.0" top="10.0" />
-               </padding>
-            </HBox>
          </children>
       </VBox>
    </center>
@@ -120,4 +109,18 @@
         </items>
       </ToolBar>
    </top>
+   <bottom>
+      <HBox alignment="BOTTOM_RIGHT" fillHeight="false" maxHeight="88.0" prefHeight="88.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#next" prefHeight="37.0" prefWidth="146.0" styleClass="navButton" text="Next">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="40.0" left="50.0" right="50.0" top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
 </BorderPane>

@@ -17,7 +17,7 @@
 
    </center>
    <top>
-      <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ToolBar prefHeight="40.0" prefWidth="200.0" styleClass="menuBar" BorderPane.alignment="CENTER">
         <items>
             <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#settingsScreen" styleClass="menuButton" text="Settings" />
             <Button disable="true" mnemonicParsing="false" styleClass="menuButton" text="Help" />
@@ -81,19 +81,21 @@
                   <Insets bottom="10.0" left="50.0" right="50.0" top="20.0" />
                </VBox.margin>
             </VBox>
-            <HBox VBox.vgrow="NEVER">
-               <padding>
-                  <Insets bottom="40.0" left="50.0" right="50.0" top="10.0" />
-               </padding>
-               <children>
-                  <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="146.0" styleClass="navButton" text="Back">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
          </children>
       </VBox>
    </center>
+   <bottom>
+      <HBox fillHeight="false" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="40.0" left="50.0" right="50.0" top="10.0" />
+         </padding>
+         <children>
+            <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="146.0" styleClass="navButton" text="Back">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>
