@@ -5,33 +5,23 @@
 .header {
     -fx-font: bold 20 "System";
 }
-.recordingArenaHeader {
-    -fx-font: 20 "System";
+#recordingArenaHeader {
+    -fx-font: bold 20 "System";
+    -fx-text-fill: cadetblue;
 }
-.recordingArenaLabel {
+#recordingArenaLabel {
     -fx-font: bold 64 "System";
 }
 .timeLabel {
-    -fx-background-color: rgb(255, 255, 255);
+    /* -fx-background-color: rgb(255, 255, 255); */
     -fx-font: 14 "System";
-    -fx-opacity: 0.75;
+    /* -fx-opacity: 0.75; */
 }
 
 #dataTextArea {
     -fx-font: 16 'Monospaced';
 
 }
-
-/* .scroll-pane {
-    -fx-border-radius: 3;
-    -fx-border-width: 3;
-    -fx-border-color: blue;
-}
-.tree-view, .table-view {
-    -fx-border-radius: 3;
-    -fx-border-width: 3;
-    -fx-border-color: red;
-} */
 
 .button:focused, .table-view:focused, .tree-view:focused, .tree-cell:focused, .tree-table-cell:focused, .tree-item:focused, .text-field:focused {
     -fx-focus-color: transparent;
@@ -64,11 +54,11 @@
 }
 
 #finishButton {
-    -fx-font: bold 20 "System";
+    -fx-font: bold 24 "System";
 }
 
 .recordingVolumeButton {
-    -fx-opacity: 0.75;
+    /* -fx-opacity: 0.75; */
     -fx-font: 14 "Font Awesome 6 Free-Solid-900";
 }
 
@@ -87,6 +77,10 @@
     -fx-border-color: rgb(230, 230, 230);
     -fx-effect: dropshadow(gaussian, rgb(230, 230, 230), 10, 0, -1, 1); 
 }
+/* .textField:invalid {
+    -fx-border-color: rgb(180, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgb(210, 0, 0), 10, 0, 0, 0);
+} */
 
 .column-header {
     -fx-background-color: linear-gradient(to top, rgb(158, 218, 221), #c3e1e1);
@@ -120,9 +114,7 @@
     -fx-background-color: lightgray;
     -fx-text-fill: black;
 }
-/* .tree-disclosure-node:closed > .arrow, .tree-disclosure-node:expanded > .arrow {
-    -fx-background-color: black;
-} */
+
 .keyBindingTable .table-row-cell:focused, .keyBindingTable .table-row-cell:selected {
     -fx-background-color: transparent;
     -fx-border-radius: 3;
@@ -132,11 +124,21 @@
 .keyBindingTable .table-row-cell:focused .table-cell, .keyBindingTable .table-row-cell:selected .table-cell {
     -fx-text-fill: black;
 }
-.recordingTimeSlider {
-    -fx-opacity: 0.75;
+
+/* recording screen */
+#recordingBorderPane {
+    -fx-background-color: lightgray;
+    -fx-border-color: transparent;
 }
-.recordingVolumeSlider {
-    -fx-opacity: 0.75;
+#controlVbox {
+    -fx-background-color: #f4f4f4;
+}
+#curArenaVbox {
+    -fx-background-color: white;
+    -fx-background-radius: 3;
+    -fx-border-radius: 3;
+    -fx-border-color: rgb(230, 230, 230);
+    -fx-effect: dropshadow(gaussian, rgb(230, 230, 230), 10, 0, -1, 1); 
 }
 
 .scroll-pane > .viewport {
@@ -163,10 +165,3 @@
     -fx-font: bold 20 "System";
     -fx-text-fill: rgb(78, 129, 130);
 }
-
-/* fixing layout
-.vbox {
-    -fx-border-width: 3;
-    -fx-border-color: pink;
-} */
-

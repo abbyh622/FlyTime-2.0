@@ -16,6 +16,8 @@ import java.awt.Toolkit;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,13 +36,17 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToolBar;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import com.abby.main.App;
@@ -57,6 +63,14 @@ import com.abby.main.Util;
 public class RecordingController implements Initializable {
     @FXML
     private MediaView videoMediaView;
+    @FXML
+    private Pane videoPane;
+    @FXML
+    private VBox controlVbox;
+    @FXML
+    private HBox bottomHbox;
+    @FXML
+    private ToolBar toolbar;
     @FXML
     private TableView<KeyBehaviorPair> keyBindingTable;
     @FXML 
@@ -82,10 +96,10 @@ public class RecordingController implements Initializable {
     @FXML
     private Button recordingHelp;
 
+    private Stage stage;
     private ScheduledExecutorService executorService;
     private AtomicInteger arenaIndex;
     private Integer intervalLength = App.seconds;
-
     private Media video;
     private MediaPlayer videoPlayer;
     private List<Arena> arenas = new ArrayList<Arena>(App.arenaList);
@@ -133,6 +147,8 @@ public class RecordingController implements Initializable {
         videoMediaView.setMediaPlayer(videoPlayer);
         // set event handler after initialization because if not then NullPointerException because scene isnt displayed yet
         Platform.runLater(() -> setEventHandlers(videoMediaView.getScene()));
+        Platform.runLater(() -> setDimensions(videoMediaView.getScene()));
+
 
         // set up schedule thing
         executorService = Executors.newSingleThreadScheduledExecutor();
@@ -192,16 +208,37 @@ public class RecordingController implements Initializable {
         videoPlayer.setOnError(() -> {
             Throwable error = videoPlayer.getError();
             if (error != null) {
-                error.printStackTrace();
+                Util.showError(stage, "If the error below says \"ERROR_MEDIA_INVALID\", try closing the app, open Windows media player, close it, and try again. If that doesn't make it work then idk !\n\n" + error.getMessage());
+                // error.printStackTrace();
             }
         });
-        System.out.println("OnReady, OnEndOfMedia, OnError set");
+        // System.out.println("OnReady, OnEndOfMedia, OnError set");
     }
 
     private void setEventHandlers(Scene scene) {
         scene.addEventFilter(KeyEvent.KEY_PRESSED, spaceFilter);
         scene.addEventHandler(KeyEvent.KEY_PRESSED, behaviorInput);
-        System.out.println("event handlers set");
+        // System.out.println("event handlers set");
+    }
+    
+    // listener for scene dimensions, change element dimensions when scene size changes
+    public void setDimensions(Scene scene) {
+        videoMediaView.fitWidthProperty().bind(videoPane.widthProperty());
+        videoMediaView.fitHeightProperty().bind(videoPane.heightProperty());
+        videoMediaView.setPreserveRatio(true);
+
+        // get mediaview width to use for binding
+        // this updates to videomediaview.getlayoutbounds.getwidth() whenever videomediaview.layoutboundsproperty changes ??
+        DoubleBinding mediaViewWidthBinding = Bindings.createDoubleBinding(() -> videoMediaView.getLayoutBounds().getWidth(),
+        videoMediaView.layoutBoundsProperty());
+
+        // bind all the width properties so it has to be that size
+        controlVbox.prefWidthProperty().bind(mediaViewWidthBinding);
+        controlVbox.minWidthProperty().bind(mediaViewWidthBinding);
+        controlVbox.maxWidthProperty().bind(mediaViewWidthBinding);
+        // bottomHbox.prefWidthProperty().bind(mediaViewWidthBinding);
+        // bottomHbox.minWidthProperty().bind(mediaViewWidthBinding);
+        // bottomHbox.maxWidthProperty().bind(mediaViewWidthBinding);
     }
 
     // event filter to capture space bar presses - pause/resume main loop
@@ -250,11 +287,11 @@ public class RecordingController implements Initializable {
         executorService.shutdownNow();
         try {
             if (!executorService.awaitTermination(1, TimeUnit.SECONDS)) {
-                System.err.println("executor did not terminate in 1 sec");
+                // System.err.println("executor did not terminate in 1 sec");
             }
         }
         catch (InterruptedException e) {
-            System.err.println("loop termination interrupted");
+            // System.err.println("loop termination interrupted");
             Thread.currentThread().interrupt();
         }
         videoPlayer.pause();
@@ -309,7 +346,7 @@ public class RecordingController implements Initializable {
     // action when pressing volume button to toggle muted/unmuted
     // sets slider value that has a changelistener that will set the mediaplayer volume and volume button icon
     public void toggleMute() {
-        if (volumeSlider.getValue() > 0) {
+        if (volumeSlider.getValue() == 0) {
             volumeSlider.setValue(100);
         }
         else {

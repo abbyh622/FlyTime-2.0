@@ -187,7 +187,7 @@
                   </VBox>
                </children>
             </HBox>
-            <HBox alignment="BOTTOM_LEFT" VBox.vgrow="NEVER">
+            <HBox alignment="BOTTOM_LEFT" maxHeight="88.0" prefHeight="88.0" VBox.vgrow="NEVER">
                <children>
                   <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="146.0" styleClass="navButton" text="Back">
                      <font>

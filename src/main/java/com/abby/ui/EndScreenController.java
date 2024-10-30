@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
@@ -75,6 +77,12 @@ public class EndScreenController implements Initializable {
 
     // maybe put a confirmation dialog in this method like "exit to home screen?"
     public void done(ActionEvent e) throws Exception {
+        // clear global vars from the session
+        App.selectedVideo = null;
+        App.selectedExperiment = null;
+        App.arenaList = null;
+        App.seconds = null;
+
         App.ctrl.switchScene(e, App.ctrl.scene1);
     }
 

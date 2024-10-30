@@ -14,6 +14,13 @@ import com.abby.persistence.ExperimentManager;
 import com.abby.persistence.SettingsManager;
 import com.abby.ui.AppController;
 
+
+
+
+// move the fucking nav buttons to the bottom section of the borderpanes
+
+
+
 public class App extends Application {
 
     // should these be static? 

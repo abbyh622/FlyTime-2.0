@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.css.PseudoClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -153,7 +154,7 @@ public class Controller1 implements Initializable {
             videoPath.set(fc.showOpenDialog(fileStage).getAbsolutePath());
         }
         catch (NullPointerException n) {
-            System.out.println("file chooser closed w/o selecting video");
+            // System.out.println("file chooser closed w/o selecting video");
         }
     }
 
@@ -162,7 +163,7 @@ public class Controller1 implements Initializable {
             String videoURI = validateVideo(path);
             if (videoURI != null) {
                 App.selectedVideo = videoURI.toString();
-                System.out.println("video accepted");
+                // System.out.println("video accepted");
             }
         }
     }
@@ -182,18 +183,20 @@ public class Controller1 implements Initializable {
             String ext = path.substring(fourthFromEnd);
             if (validFileTypes.contains(ext)) {
                 // can just do file.toUri();
+                // videoPathField.pseudoClassStateChanged(PseudoClass.getPseudoClass("invalid"), false);
                 return vidFile.toURI().toString();
             }
             else {
                 // error message/tell user video invalid, no video selected
-                System.out.println("Error: invalid file type");
-                System.out.println(validFileTypes.toString());
+                // Util.showError(stage, "Error: invalid file type");
+                // videoPathField.pseudoClassStateChanged(PseudoClass.getPseudoClass("invalid"), true);
                 return null;
             }
         }
         else {
             // error message/tell user video invalid, no video selected
-            System.out.println("Error: File not found");
+            // Util.showError(stage, "Error: File not found");
+            // videoPathField.pseudoClassStateChanged(PseudoClass.getPseudoClass("invalid"), true);
             return null;
         }
     }    
@@ -206,7 +209,12 @@ public class Controller1 implements Initializable {
             return;
         }
         if (App.selectedVideo == null) {
-            Util.showError(stage, "Select a video");
+            if (videoPathField.getText() != null && videoPathField.getText().length() > 0) {
+                Util.showError(stage, "Video file invalid");
+            }
+            else {
+                Util.showError(stage, "Select a video");
+            }
             return;
         }
         App.ctrl.switchScene(e, App.ctrl.scene2);
