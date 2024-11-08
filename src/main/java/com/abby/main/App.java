@@ -14,6 +14,17 @@ import com.abby.persistence.ExperimentManager;
 import com.abby.persistence.SettingsManager;
 import com.abby.ui.AppController;
 
+
+// fix:
+// add temp backup file situation in datamanager.appendcumfile()
+// going back to scene1 the selected expmnt doesnt show, back to scene2 the seconds is reset
+// scene2 seconds spinner sometimes goes down when up button clicked
+// make so behavior name cant be null in experimentdialog
+// fix nonexistent file/parse fail in experimentmanager and settingsmanager
+// check/fix resultConverter use in dialogs
+// settingscontroller - change bidirectional binding of settings to changelistener maybe?
+
+
 public class App extends Application {
 
     // should these be static? 
@@ -47,17 +58,6 @@ public class App extends Application {
         scene.getStylesheets().add(stylesheet);
         primaryStage.setScene(scene);
         primaryStage.show();
-
-    
-        // fix:
-        // add temp backup file situation in datamanager.appendcumfile()
-        // going back to scene1 the selected expmnt doesnt show, back to scene2 the seconds is reset
-        // scene2 seconds spinner sometimes goes down when up button clicked
-        // make so behavior name cant be null in experimentdialog
-        // fix nonexistent file/parse fail in experimentmanager and settingsmanager
-        // check/fix resultConverter use in dialogs
-        // settingscontroller - change bidirectional binding of settings to changelistener maybe?
-
     }
 
     public static void main(String[] args) { 
