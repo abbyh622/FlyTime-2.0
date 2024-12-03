@@ -1,4 +1,5 @@
-# Flytime 2.0
+# ![fruit-fly](https://github.com/user-attachments/assets/b6986173-19ae-42e5-8063-b7d5d19e1d5e) Flytime 2.0
+
 Flytime 2.0 was created to enhance efficiency and reliability of behavioral data collection in <i>Drosophila</i> research, allowing researchers to easily log and export experimental data through an intuitive GUI.<br>
 
 <b>Video integration:</b> Enables importing and playing videos within the application.<br>
@@ -15,7 +16,7 @@ Libraries used:
 
 ### Installation and Instructions
 Flytime 2.0 is available for Windows <br>
-Download the installer [<b>here</b>]()!<br>
+Download the installer [<b>here</b>](https://github.com/abbyh622/FlyTime-2.0/releases/tag/v1.0.0)!<br>
 
 <b>To use the app,</b><br>
 
