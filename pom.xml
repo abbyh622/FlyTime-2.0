@@ -102,7 +102,6 @@
             <jlinkVerbose>true</jlinkVerbose>
             <launcher>${app.name}</launcher>
             <jlinkImageName>${app.name}</jlinkImageName>
-            <jlinkZipName>${app.name}zip</jlinkZipName>
             <mainClass>${main.class}</mainClass>
           </configuration>
         </plugin>

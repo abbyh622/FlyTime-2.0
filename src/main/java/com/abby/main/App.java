@@ -38,7 +38,7 @@ public class App extends Application {
     public static String selectedVideo;                     // URI of the video to use
     public static Integer seconds;                          // number of seconds to observe each arena in a cycle
 
-    public static String winTitle = "Flytime (I still don't have an actual name) - [beta version or whatever]";
+    public static String winTitle = "Flytime 2.0";
     public static String winIcon = "/fruit-fly.png";
     public static String stylesheet;
     private String initialScene = "/screen1.fxml"; 
