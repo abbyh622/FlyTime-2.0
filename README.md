@@ -18,10 +18,20 @@ Flytime 2.0 is available for Windows <br>
 Download the installer [<b>here</b>]()!<br>
 
 <b>To use the app,</b><br>
+
 Create an experiment configuration and import a video<br>
+
+![Screenshot (15)](https://github.com/user-attachments/assets/3dff5e92-f17c-40c8-8d2e-90d3c212527c)
+![Screenshot (16 2)](https://github.com/user-attachments/assets/4fbce281-66ef-405e-8aaf-60ce14e67102)
 
 Enter descriptions for each group and set the interval length<br>
 
+![Screenshot (12)](https://github.com/user-attachments/assets/cd19be23-37da-4a36-a095-a8ab6b0b8ff2)
+
 Record data while watching the video<br>
 
+![Screenshot (19 2)](https://github.com/user-attachments/assets/8687a5bb-3839-4e26-b4ad-8da45f21a395)
+
 View and export your data<br>
+
+![Screenshot (18)](https://github.com/user-attachments/assets/d3889413-c6d6-4f72-99e4-f8fce5aec2ea)
